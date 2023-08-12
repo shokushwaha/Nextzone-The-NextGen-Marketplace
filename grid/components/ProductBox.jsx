@@ -25,6 +25,8 @@ margin: 0;
 
 const StyledImage = styled.img`
 height: 150px;
+object-fit: contain;
+mix-blend-mode: multiply;
 `
 const ProductInfoBox = styled.div`
 margin-top: 10px;

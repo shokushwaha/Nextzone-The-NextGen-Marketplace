@@ -33,6 +33,7 @@ const ImageButton = styled.div`
     cursor: pointer;
     border-radius: 5px;
     flex-wrap:wrap;
+    object-fit:cover;
     
   @media screen and (max-width: 550px) {
    
@@ -48,22 +49,22 @@ const BigImageWrapper = styled.div`
 `;
 
 export default function ProductImages({ images }) {
-    const [activeImage, setActiveImage] = useState(images?.[0]);
-    return (
-        <>
-            <BigImageWrapper>
-                <BigImage src={activeImage} />
-            </BigImageWrapper>
-            <ImageButtons>
-                {images.map(image => (
-                    <ImageButton
-                        key={image}
-                        active={image === activeImage}
-                        onClick={() => setActiveImage(image)}>
-                        <Image src={image} alt="" />
-                    </ImageButton>
-                ))}
-            </ImageButtons>
-        </>
-    );
+  const [activeImage, setActiveImage] = useState(images?.[0]);
+  return (
+    <>
+      <BigImageWrapper>
+        <BigImage src={activeImage} />
+      </BigImageWrapper>
+      <ImageButtons>
+        {images.map(image => (
+          <ImageButton
+            key={image}
+            active={image === activeImage}
+            onClick={() => setActiveImage(image)}>
+            <Image src={image} alt="" />
+          </ImageButton>
+        ))}
+      </ImageButtons>
+    </>
+  );
 }

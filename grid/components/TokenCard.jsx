@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React, { useEffect } from 'react'
 
-const TokenCard = ({ name, symbol, price, issued }) => {
+const TokenCard = ({ name, symbol, price, issued, expiry }) => {
 
     return (
         <>
@@ -24,7 +24,7 @@ const TokenCard = ({ name, symbol, price, issued }) => {
                 </div>
                 <div className='flex items-center justify-center flex-col'>
                     <span className='flex items-center gap-2'>
-                        <span className=''>
+                        <span className='font-extrabold uppercase mb-2 text-lg'>
                             {name}
                         </span>
                     </span>
@@ -34,7 +34,7 @@ const TokenCard = ({ name, symbol, price, issued }) => {
                         <span className='text-gray-500 font-bold'>
                             Value:
                         </span>
-                        <span className=''>
+                        <span className=' px-2 rounded-lg'>
                             {price}
                         </span>
                     </span>
@@ -43,7 +43,15 @@ const TokenCard = ({ name, symbol, price, issued }) => {
                             Issued :
                         </span>
                         <span className=''>
-                            {issued.substr(0, 10)}
+                            {issued.substr(0, 10).split('-').reverse().join('-')}
+                        </span>
+                    </span>
+                    <span className='flex items-center '>
+                        <span className='text-gray-500 font-bold'>
+                            Expires:
+                        </span>
+                        <span className=''>
+                            {expiry.substr(0, 10).split('-').reverse().join('-')}
                         </span>
                     </span>
                 </div>

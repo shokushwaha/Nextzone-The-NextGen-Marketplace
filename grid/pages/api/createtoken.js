@@ -16,7 +16,7 @@ export default async function handler(req, res) {
             couponName: tokenName,
             couponSymbol: tokenSymbol,
             couponPrice: amnt,
-            expiryDate: new Date()
+            expiryDate: Date.now() + (1 * 24 * 60 * 60 * 1000)
         });
 
         await newReward.save();

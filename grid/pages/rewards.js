@@ -16,11 +16,13 @@ import TokenCard from '@/components/TokenCard';
 const Rewards = () => {
     const { currentAccount } = useContext(CartContext);
     const [tokens, setTokens] = useState([]);
+    const [expiredTokens, setExpiredTokens] = useState([]);
     async function fetchDetails() {
         console.log(currentAccount)
-        const res = await axios.post('/api/fetchtokens', { currentAccount });
-        setTokens(res.data)
-        console.log(res)
+        const tok = await axios.post('/api/fetchtokens', { currentAccount });
+        const expTok = await axios.post('/api/fetchexpiredtoken', { currentAccount });
+        setTokens(tok.data)
+        setExpiredTokens(expTok.data)
     }
     useEffect(() => {
 
@@ -67,12 +69,32 @@ const Rewards = () => {
                 <div className='grid grid-cols-4'>
                     {tokens && tokens.map(token => (
                         <>
-                            <TokenCard name={token.couponName} symbol={token.couponSymbol} price={token.couponPrice} issued={token.createdAt} />
+                            <TokenCard name={token.couponName} symbol={token.couponSymbol} price={token.couponPrice} issued={token.createdAt} expiry={token.expiryDate} />
                         </>
                     ))
                     }
                 </div>
             </Center>
+
+
+            <div>
+                <span className='flex items-center justify-center text-2xl font-bold mt-4'>Expired Tokens</span>
+                <Center>
+                    {expiredTokens.length === 0 && <span className='text-gray-400 flex items-center justify-center mt-4'>
+
+                        Don't have any expired tokens!
+                    </span>
+                    }
+                    <div className='grid grid-cols-4'>
+                        {expiredTokens && expiredTokens.map(token => (
+                            <>
+                                <TokenCard name={token.couponName} symbol={token.couponSymbol} price={token.couponPrice} issued={token.createdAt} expiry={token.expiryDate} />
+                            </>
+                        ))
+                        }
+                    </div>
+                </Center>
+            </div>
 
         </>
     )
