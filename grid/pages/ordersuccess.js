@@ -463,6 +463,8 @@ export default function Ordersuccess() {
     const handleClick = async () => {
         setMinting(true);
         await axios.post('/api/order', { id, cartProducts })
+        const amt = router.query.amnt
+        await axios.post('/api/deletetoken', { amt })
         setClicked(true)
         toast.success("Order placed")
         localStorage.removeItem('cart')

@@ -8,12 +8,12 @@ export default async function handler(req, res) {
     const { method } = req;
     if (method === 'POST') {
 
-        const { id } = req.body;
+        const { amt } = req.body;
 
 
-        const tok = await Reward.findByIdAndDelete({ _id: id });
+        const tok = await Reward.deleteOne({ couponPrice: amt });
 
-        // await newReward.save();
+        console.log(tok)
         res.json(tok);
     }
 

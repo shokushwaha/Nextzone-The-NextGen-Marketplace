@@ -9,11 +9,7 @@ export default async function handler(req, res) {
     if (method === 'POST') {
 
         const { currentAccount } = req.body;
-        console.log("hi")
-        console.log(currentAccount)
-        console.log("hi")
         const tokens = await Reward.find({ custWallet: currentAccount });
-        console.log(tokens)
         res.json(tokens);
     }
 

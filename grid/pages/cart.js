@@ -185,20 +185,17 @@ export default function CartPage() {
     }
 
     let total = 0;
+    let dp = 0
     for (const productId of cartProducts) {
+
         const price = products.find(p => p._id === productId)?.price || 0;
+        const tempDp = products.find(p => p._id === productId)?.discount || 0;
+        console.log(tempDp)
         total += price;
+        dp = dp + (price - (price * tempDp) / 100)
     }
 
-    let discountedPrice = 0;
-    for (let i = 0; i < products.length; i++) {
 
-        console.log(products.length)
-        let p = products[i].price;
-        let d = products[i].discount
-        discountedPrice = discountedPrice + (p - (p * d) / 100)
-        console.log(discountedPrice)
-    }
     let id = loggedInUser?.data?._id;
     const goToPayment = async () => {
         if (!name || !city || !email || !postalCode || !streetAddress || !country) {
@@ -236,7 +233,10 @@ export default function CartPage() {
                 {
                     pathname:
                         '/ordersuccess',
-                    query: { name: finalPrice }
+                    query: {
+                        name: finalPrice,
+                        amnt: selectedDiscountPrice
+                    }
                 }
 
             );
@@ -247,7 +247,7 @@ export default function CartPage() {
                 {
                     pathname:
                         '/ordersuccess',
-                    query: { name: discountedPrice }
+                    query: { name: dp }
                 }
 
             );
@@ -262,19 +262,23 @@ export default function CartPage() {
     const [options, setOptions] = useState([]);
     const [selectedOption, setSelectedOption] = useState('');
     const [selectedToken, setSelectedToken] = useState('');
+    const [tokensLoaded, setTokensLoaded] = useState(false);
+    const [selectedDiscountPrice, setSelectedDiscountPrice] = useState(0);
     async function fetchTokens() {
+        setTokensLoaded(false);
         const res = await axios.post('/api/fetchtokens', { currentAccount });
         setOptions(res.data)
+        setTokensLoaded(true);
     }
     useEffect(() => {
 
         fetchTokens();
     }, []);
-    const handleOptionChange = event => {
-        setSelectedOption(event.target.value);
-        console.log(event.target.value)
-        setFinalPrice(discountedPrice - event.target.value)
+    const handleOptionChange = (event) => {
 
+        setSelectedDiscountPrice(event.target.value);
+        setSelectedOption(event.target.value);
+        setFinalPrice(dp - event.target.value);
     };
 
 
@@ -395,7 +399,7 @@ export default function CartPage() {
                                                     <span className={finalPrice !== 0 ? "line-through text-gray-400" : "" + "text-gray-800 font-bold"}
 
                                                     >
-                                                        ${discountedPrice}
+                                                        ${dp}
                                                     </span>
                                                     {finalPrice !== 0 &&
                                                         <span className="text-gray-800 font-bold">
@@ -412,28 +416,25 @@ export default function CartPage() {
 
                                 )
                             }
-                            <div className="px-2 mt-8 shadow-lg">
+                            {
+                                tokensLoaded &&
+                                <div className="px-2 mt-8 shadow-lg">
 
-                                <select id="dropdown" value={selectedOption} onChange={handleOptionChange}
+                                    <select id="dropdown" value={selectedOption} onChange={handleOptionChange}
 
-                                    className="w-full"
-                                >
-                                    <option value="">Select your token</option>
-                                    {options.map(option => (
-                                        <option key={option._id} value={option.couponPrice}>
-                                            <span className="flex gap-2">
-
-                                                {option.couponName}
-                                            </span>
-                                            <span>
-
-                                                {option.couponPrice}
-                                            </span>
-                                            <span></span>
-                                        </option>
-                                    ))}
-                                </select>
-                            </div>
+                                        className="w-full"
+                                    >
+                                        <option value="">Select your token</option>
+                                        {options.map(option => (
+                                            <>
+                                                <option key={option._id} value={option.couponPrice}>
+                                                    {option.couponPrice} {option.couponName}
+                                                </option>
+                                            </>
+                                        ))}
+                                    </select>
+                                </div>
+                            }
                         </Box>
 
                         {!!cartProducts?.length && (
