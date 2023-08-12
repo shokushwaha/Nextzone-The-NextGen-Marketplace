@@ -12,6 +12,7 @@ import uuid4 from 'uuid4'
 
 import randomstring from 'randomstring';
 import Mintloader from '@/components/Mintloader';
+import TokenModal from '@/components/TokenModal';
 
 
 // blockchain imports 
@@ -456,7 +457,13 @@ export default function Ordersuccess() {
 
     const router = useRouter();
     const [clicked, setClicked] = useState(false);
-    const [minting, setMinting] = useState(false)
+    const [minting, setMinting] = useState(false);
+    const [modalOpen, setModalOpen] = useState(false);
+
+    const [ftName, setFTName] = useState('');
+    const [ftSymbol, setFTSymbol] = useState('');
+    const [ftAmnt, setFTAmnt] = useState(0);
+
     const { loggedInUser, cartProducts, addProduct, removeProduct, clearCart, currentAccount } = useContext(CartContext);
     let id = loggedInUser?.data?._id;
 
@@ -509,7 +516,10 @@ export default function Ordersuccess() {
                 finalAmount = Math.floor(amount * 0.1)
             }
 
-
+            // setting values to pass to token modal
+            setFTName(couponName);
+            setFTSymbol(couponSymbol)
+            setFTAmnt(finalAmount)
 
 
 
@@ -544,14 +554,15 @@ export default function Ordersuccess() {
 
 
 
-            console.log({ currentAccount, tokenName, tokenSymbol, amnt })
+
             const res = await axios.post('/api/createtoken', { currentAccount, tokenName, tokenSymbol, amnt });
 
 
             const receipt = await tx.wait();
             console.log('Tokens minted successfully!');
             setMinting(false);
-            console.log(res)
+            setModalOpen(true);
+            console.log(res.data)
 
         } catch (error) {
             console.error('Error minting tokens:', error);
@@ -587,6 +598,13 @@ export default function Ordersuccess() {
                             height={800}
                         />
                         : null}
+                {
+                    (clicked && !minting && modalOpen) ? <span className='flex flex-col items-center justify-center gap-4'>
+                        <TokenModal ftName={ftName} ftSymbol={ftSymbol} ftAmnt={ftAmnt} />
+
+                        <button onClick={() => setModalOpen(false)} className='flex items-center justify-center bg-yellow-400 px-8 py-1 rounded-md shadow-xl hover:bg-yellow-500'>Ok</button>
+                    </span> : null
+                }
                 <div className='flex flex-col gap-4 items-center justify-center min-h-[80vh]'>
 
                     <span className='mt-4 text-xl'>
