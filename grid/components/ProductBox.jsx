@@ -90,7 +90,7 @@ export default function ProductBox({ _id, title, description, images, price, dis
 
                             <Price>
 
-                                ${price}
+                                ₹{price}
                             </Price>
                             <Discount>
                                 {discount}% off

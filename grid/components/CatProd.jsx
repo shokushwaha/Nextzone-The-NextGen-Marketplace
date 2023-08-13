@@ -38,7 +38,7 @@ export default function Catprod({ products }) {
                                         <span className='flex items-center gap-4'>
 
                                             <span className='text-2xl font-bold'>
-                                                ${prod.price}
+                                                ₹{prod.price}
                                             </span>
                                             <span className='text-xl text-gray-400 bg-yellow-300 rounded-md px-2'>
                                                 {prod.discount}% off

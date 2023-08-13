@@ -377,7 +377,7 @@ export default function CartPage() {
                                                             {cartProducts.filter(id => id === product._id).length}
                                                             <QuantityButton onClick={() => moreOfThisProduct(product._id)}>+</QuantityButton>
                                                         </td>
-                                                        <td>${cartProducts.filter(id => id === product._id).length * product.price}</td>
+                                                        <td>₹{cartProducts.filter(id => id === product._id).length * product.price}</td>
 
                                                     </tr>
 
@@ -394,12 +394,12 @@ export default function CartPage() {
                                                 <td></td>
                                                 <td className="flex flex-col">
                                                     <span className="text-gray-400 line-through">
-                                                        ${total}
+                                                        ₹{total}
                                                     </span>
                                                     <span className={finalPrice !== 0 ? "line-through text-gray-400" : "" + "text-gray-800 font-bold"}
 
                                                     >
-                                                        ${dp}
+                                                        ₹{dp}
                                                     </span>
                                                     {finalPrice !== 0 &&
                                                         <span className="text-gray-800 font-bold">
