@@ -8,7 +8,7 @@ export default async function handler(req, res) {
     const { method } = req;
     if (method === 'POST') {
 
-        const { currentAccount, tokenName, tokenSymbol, amnt } = req.body;
+        const { currentAccount, tokenName, tokenSymbol, amnt, tHash } = req.body;
 
 
         const newReward = new Reward({
@@ -16,6 +16,7 @@ export default async function handler(req, res) {
             couponName: tokenName,
             couponSymbol: tokenSymbol,
             couponPrice: amnt,
+            transactionHash: tHash,
             expiryDate: Date.now() + (1 * 24 * 60 * 60 * 1000)
         });
 

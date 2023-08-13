@@ -1,6 +1,10 @@
 import React from 'react'
 
-const TokenModal = ({ ftName, ftSymbol, ftAmnt }) => {
+const TokenModal = ({ ftName, ftSymbol, ftAmnt, transactionHash }) => {
+
+    const goToEtherScan = () => {
+        window.open(`https://mumbai.polygonscan.com/tx/${transactionHash}`, '_blank')
+    }
     return (
         <div className='flex flex-col items-center justify-center mt-4 '>
 
@@ -35,6 +39,10 @@ const TokenModal = ({ ftName, ftSymbol, ftAmnt }) => {
                         {ftAmnt}
                     </span>
                 </span>
+
+                <button onClick={goToEtherScan} className='bg-neutral-800 text-gray-200 mt-4 px-2 rounded-lg shadow-lg mb-4'>
+                    View Token Reciept
+                </button>
             </div>
         </div>
     )

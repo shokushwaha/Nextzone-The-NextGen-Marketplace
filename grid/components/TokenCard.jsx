@@ -1,8 +1,10 @@
 import Image from 'next/image'
 import React, { useEffect } from 'react'
 
-const TokenCard = ({ name, symbol, price, issued, expiry }) => {
-
+const TokenCard = ({ name, symbol, price, issued, expiry, hash }) => {
+    const goToEtherScan = (url) => {
+        window.open(`https://mumbai.polygonscan.com/tx/${url}`, '_blank');
+    }
     return (
         <>
 
@@ -54,6 +56,8 @@ const TokenCard = ({ name, symbol, price, issued, expiry }) => {
                             {expiry.substr(0, 10).split('-').reverse().join('-')}
                         </span>
                     </span>
+
+                    <button onClick={() => goToEtherScan(hash)} >View Reciept</button>
                 </div>
 
             </div>

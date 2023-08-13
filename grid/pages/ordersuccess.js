@@ -463,7 +463,7 @@ export default function Ordersuccess() {
     const [ftName, setFTName] = useState('');
     const [ftSymbol, setFTSymbol] = useState('');
     const [ftAmnt, setFTAmnt] = useState(0);
-
+    const [transactionHash, setTransactionHash] = useState('');
     const { loggedInUser, cartProducts, addProduct, removeProduct, clearCart, currentAccount } = useContext(CartContext);
     let id = loggedInUser?.data?._id;
 
@@ -516,7 +516,7 @@ export default function Ordersuccess() {
                 finalAmount = Math.floor(amount * 0.1)
             }
 
-            // setting values to pass to token modal
+
             setFTName(couponName);
             setFTSymbol(couponSymbol)
             setFTAmnt(finalAmount)
@@ -533,32 +533,32 @@ export default function Ordersuccess() {
 
             const recipientAddress = currentAccount;
 
-            // manual setting of amoutn to mint
+
             let amnt = finalAmount;
             const amountToMint = ethers.utils.parseEther(amnt.toString());
 
-            // rand it for generating
+
             const randomNumber = randomstring.generate({
                 length: 10,
                 charset: 'numeric'
             })
             const tokenId = randomNumber;
 
-            // dyanmic token name
+
             const tokenName = couponName;
 
-            // we will set price as string here
+
             const tokenSymbol = couponSymbol;
 
             const tx = await contract.mint(recipientAddress, amountToMint, tokenId, tokenName, tokenSymbol);
 
 
 
-
-            const res = await axios.post('/api/createtoken', { currentAccount, tokenName, tokenSymbol, amnt });
-
-
             const receipt = await tx.wait();
+            setTransactionHash(receipt.transactionHash);
+            let tHash = receipt.transactionHash
+            const res = await axios.post('/api/createtoken', { currentAccount, tokenName, tokenSymbol, amnt, tHash });
+
             console.log('Tokens minted successfully!');
             setMinting(false);
             setModalOpen(true);
@@ -600,7 +600,7 @@ export default function Ordersuccess() {
                         : null}
                 {
                     (clicked && !minting && modalOpen) ? <span className='flex flex-col items-center justify-center gap-4'>
-                        <TokenModal ftName={ftName} ftSymbol={ftSymbol} ftAmnt={ftAmnt} />
+                        <TokenModal ftName={ftName} ftSymbol={ftSymbol} ftAmnt={ftAmnt} transactionHash={transactionHash} />
 
                         <button onClick={() => setModalOpen(false)} className='flex items-center justify-center bg-yellow-400 px-8 py-1 rounded-md shadow-xl hover:bg-yellow-500'>Ok</button>
                     </span> : null

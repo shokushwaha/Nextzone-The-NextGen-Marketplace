@@ -69,7 +69,7 @@ const Rewards = () => {
                 <div className='grid grid-cols-4'>
                     {tokens && tokens.map(token => (
                         <>
-                            <TokenCard name={token.couponName} symbol={token.couponSymbol} price={token.couponPrice} issued={token.createdAt} expiry={token.expiryDate} />
+                            <TokenCard name={token.couponName} symbol={token.couponSymbol} price={token.couponPrice} issued={token.createdAt} expiry={token.expiryDate} hash={token.transactionHash} />
                         </>
                     ))
                     }

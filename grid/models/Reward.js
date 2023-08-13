@@ -20,7 +20,8 @@ const RewardSchema = new Schema({
     couponName: { type: String, required: true },
     couponSymbol: { type: String, required: true },
     couponPrice: { type: Number, required: true },
-    expiryDate: { type: Date }
+    transactionHash: { type: String, required: true },
+    expiryDate: { type: Date },
 
 
 }, {
