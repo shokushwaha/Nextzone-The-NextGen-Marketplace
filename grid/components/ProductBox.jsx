@@ -14,7 +14,6 @@ height: 170px;
 border-radius: 10px;
 `;
 const ProductWrapper = styled.div`
-
 `;
 
 const StyledTitle = styled(Link)`
