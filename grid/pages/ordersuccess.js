@@ -13,6 +13,7 @@ import uuid4 from 'uuid4'
 import randomstring from 'randomstring';
 import Mintloader from '@/components/Mintloader';
 import TokenModal from '@/components/TokenModal';
+import ScratchCard from 'react-scratchcard'
 
 
 // blockchain imports 
@@ -572,6 +573,14 @@ export default function Ordersuccess() {
         }
     }
 
+    const settings = {
+        height: 400,
+        width: 400,
+        image: '/scratchCard.jpg',
+        finishPercent: 60,
+        onComplete: () => console.log("scratch card won")
+    }
+
 
 
 
@@ -593,21 +602,26 @@ export default function Ordersuccess() {
                 position="top-right"
                 reverseOrder={false}
             />
-            <Center>
-                {
-                    clicked ?
-                        <Confetti className=' mx-auto'
-                            width={1000}
-                            height={800}
-                        />
-                        : null}
-                {
-                    (clicked && !minting && modalOpen) ? <span className='flex flex-col items-center justify-center gap-4'>
-                        <TokenModal ftName={ftName} ftSymbol={ftSymbol} ftAmnt={ftAmnt} transactionHash={transactionHash} />
+            {/* <Center> */}
+            {
+                clicked ?
+                    <Confetti className=' mx-auto'
+                        width={1000}
+                        height={800}
+                    />
+                    : null}
+            {
+                (clicked && !minting && modalOpen) ? <div className='flex flex-col items-center justify-center gap-4 h-[80vh]'>
 
-                        <button onClick={() => setModalOpen(false)} className='flex items-center justify-center bg-yellow-400 px-8 py-1 rounded-md shadow-xl hover:bg-yellow-500'>Ok</button>
-                    </span> : null
-                }
+                    <ScratchCard {...settings}>
+                        <TokenModal ftName={ftName} ftSymbol={ftSymbol} ftAmnt={ftAmnt} transactionHash={transactionHash} />
+                        <button onClick={() => setModalOpen(false)} className=' absolute left-[160px] bg-yellow-400 px-8 py-1 mt-3 rounded-md shadow-xl hover:bg-yellow-500'>Ok</button>
+                    </ScratchCard>
+
+                </div> : null
+            }
+            {
+                !modalOpen &&
                 <div className='flex flex-col gap-4 items-center justify-center min-h-[80vh]'>
 
                     <span className='mt-4 text-xl'>
@@ -625,7 +639,9 @@ export default function Ordersuccess() {
                         <button onClick={handleClick} className='bg-green-400 w-2/5 rounded-md shadow px-4 py-1 ' >Confirm Order</button>
                         : <span className='text-center text-green-600 text-2xl text-bold'>Order Placed Successfully</span>}
                 </div>
-            </Center>
+            }
+
+            {/* </Center> */}
             <Footer />
         </>
     )

@@ -9,9 +9,9 @@ const TokenModal = ({ ftName, ftSymbol, ftAmnt, transactionHash }) => {
         <div className='flex flex-col items-center justify-center mt-4 '>
 
             <span className='text-lg'>Congratulations! You have won a
-                <span className='font-extrabold px-2 '>
+                <h1 className='font-extrabold px-2 flex items-center justify-center'>
                     {ftName}
-                </span>
+                </h1>
             </span>
             <div className='mt-4 flex flex-col items-center justify-center shadow-xl bg-slate-200 px-4 '>
                 <span>
