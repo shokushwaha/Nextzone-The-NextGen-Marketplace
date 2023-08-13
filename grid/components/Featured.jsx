@@ -17,7 +17,6 @@ const Title = styled.h1`
   margin:0;
   font-weight  :normal  ;
   font-size: 2rem;
-  text-transform: uppercase;
   padding: 10px 0px;
 `;
 
@@ -94,10 +93,10 @@ export default function Featured({ product }) {
                     >
                         <Wrapper>
                             <Column>
-                                <div>
+                                <div className="flex flex-col items-center justify-center pt-8">
 
                                     <Title>{product.title}</Title>
-                                    <Desc>{product.description.substring(0, 300)}...</Desc>
+                                    <Desc>{product.description.substring(0, 500)}...</Desc>
                                     <ButtonWrapper>
                                         <ButtonLink white outlined href={'/product/' + product._id}>
                                             Read More</ButtonLink>
@@ -114,7 +113,7 @@ export default function Featured({ product }) {
                             </Column>
                             <Column>
 
-                                <StyledImage src="https://res.cloudinary.com/dt21djrjq/image/upload/v1691917562/yymttc4usxa1foowi9jq.jpg" alt="featured image" />
+                                <StyledImage src="https://res.cloudinary.com/dt21djrjq/image/upload/v1691917562/yymttc4usxa1foowi9jq.jpg" alt="featured image" className="w-[300px]"/>
 
 
                             </Column>

@@ -56,10 +56,13 @@ const StyledButton = styled.button`
 background-color: transparent;
 color:green ;
 border:1px solid green;
-padding: 4px 15px;
 border-radius: 4px;
 transition: all;
 transition-duration: 100ms;
+display: flex ;
+padding: 3px;
+gap:1 ;
+
 
 :hover{
     background-color: green;
@@ -102,7 +105,7 @@ export default function ProductBox({ _id, title, description, images, price, dis
                         <div>
 
                             <StyledButton primary onClick={() => addProduct(_id)} >
-                                <CartIcon />
+                                <CartIcon /> <span className="ml-2">Add To Cart</span>
                             </StyledButton>
                         </div>
                     </PriceRow>
