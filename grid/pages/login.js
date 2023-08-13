@@ -5,36 +5,11 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useContext, useEffect, useState } from 'react'
 import { Toaster, toast } from 'react-hot-toast';
-import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import Head from 'next/head';
-const StyledButton = styled.button`
-width: 100%;
-background-color: skyBlue;
-color:black;
-border:1px solid skyBlue;
-padding: 4px 15px;
-border-radius: 4px;
-transition: all;
-transition-duration: 200ms;
-display: flex;
-flex-direction: column;
-align-items: center;
-margin-top: 10px;
-:hover{
-  background-color: #32cd32;
-  color: white;
-  border:1px solid #32cd32;
-    transform: scale(1.1);
-    svg{
-        display: flex;
-      width: 100px;
-    }
-    span{
-        display: none;
-    }
-}
-`;
+import login from "@/public/login.png"
+import Image from 'next/image';
+
 export default function Login() {
 
     const { setLoggedInUser } = useContext(CartContext);
@@ -43,11 +18,7 @@ export default function Login() {
     const router = useRouter();
     const { setLoggedIn } = useContext(CartContext);
 
-
-
     const ls = typeof window !== 'undefined' ? window.localStorage : null;
-
-
 
     useEffect(() => {
 
@@ -59,9 +30,6 @@ export default function Login() {
             }
         }
     }, []);
-
-
-
 
     const handleLogin = async (e) => {
 
@@ -90,7 +58,7 @@ export default function Login() {
 
     }
     return (
-        <>
+        <div className='overflow-hidden'>
             <Head>
                 <title>NextZone - Login</title>
 
@@ -102,63 +70,56 @@ export default function Login() {
                 />
                 <div
 
-                    className="flex flex-col items-center justify-center gap-20  sm:flex md:flex-row md:py-56"
+                    className="flex flex-col items-center justify-center sm:flex md:flex-row h-[100vh]"
 
                 >
 
                     <motion.div
-                        className="container text-center"
+                        className="text-center md:ml-[-150px]"
                         initial={{ opacity: 0, y: "-2000px" }}
                         animate={{ opacity: 1, y: "0px" }}
                         exit={{ opacity: 0, y: "-2000px" }}
                         transition={{ duration: 1 }}
                     >
-                        <div className='flex flex-col  text-6xl items-center gap-4 md:text-8xl'>
-                            NEXTZONE
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-24 h-24">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-                            </svg>
-
-                        </div>
-                        <div className='flex flex-col px-8 '>
-
-                            <Link href={'https://ecom-admin-panel.vercel.app/'} className='text-blue-600 text-extrabold text-2xl pt-4 hover:text-blue-800 '>
-                                Admin Login
-                            </Link>
-                        </div>
+                        <Image src="/login.png" alt="login-image" width={1000} height={1000} />
                     </motion.div>
 
                     <motion.div
-                        className="container text-center"
+                        className="text-center mt-[70px]"
                         initial={{ opacity: 0, scale: 0.5 }}
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0.5 }}
                         transition={{ duration: 1 }}
                     >
-                        <div className='flex flex-col gap-8'>
+                        <div className='flex flex-col gap-8 items-center'>
 
-                            <form onSubmit={handleLogin} className='flex flex-col px-8'>
-                                <h1 className='text-4xl pb-4 uppercase'>Login</h1>
-                                <div className='flex flex-col gap-1 mb-2'>
+                            <form onSubmit={handleLogin} className='flex flex-col px-8 items-center gap-2'>
+                                <h1 className='text-blue-950 font-extrabold text-3xl mb-7'>NextZone Login</h1>
+                                <div className='flex flex-col gap-1 mb-2 items-center' >
 
-                                    <label className='flex gap-1 items-center justify-start'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                                        <path strokeLinecap="round" d="M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 10-2.636 6.364M16.5 12V8.25" />
-                                    </svg>
-                                        Email</label>
-                                    <input type="text" placeholder='Email' value={email} onChange={e => setEmail(e.target.value)}
-                                        className='px-4 py-1 rounded-md border-b-2 border-blue-200 shadow'
+                                    <span className='flex gap-3'>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 9v.906a2.25 2.25 0 01-1.183 1.981l-6.478 3.488M2.25 9v.906a2.25 2.25 0 001.183 1.981l6.478 3.488m8.839 2.51l-4.66-2.51m0 0l-1.023-.55a2.25 2.25 0 00-2.134 0l-1.022.55m0 0l-4.661 2.51m16.5 1.615a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V8.844a2.25 2.25 0 011.183-1.98l7.5-4.04a2.25 2.25 0 012.134 0l7.5 4.04a2.25 2.25 0 011.183 1.98V19.5z" />
+                                        </svg>
+                                        E-mail
+                                    </span>
+                                    <input type="text" placeholder='Enter Your Email' value={email} onChange={e => setEmail(e.target.value)}
+                                        className=' pl-6 min-w-[300px] w-[30%] h-[2.5rem] rounded-xl focus:outline-none border-2 border-gray-300 mt-1'
                                     />
                                 </div>
 
-                                <div className='flex flex-col gap-1 mb-2'>
+                                <div className='flex flex-col gap-1 mb-2 items-center'>
 
-                                    <label className='flex gap-1 items-center justify-start'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z" />
-                                    </svg>
-                                        Password</label>
-                                    <input type="password" placeholder='Password' value={password} onChange={e => setPassword(e.target.value)} className='px-4 py-1 rounded-md border-b-2 border-blue-200 shadow' />
+                                    <span className='flex gap-3'>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88" />
+                                        </svg>
+
+                                        Password
+                                    </span>
+                                    <input type="password" placeholder='Enter Your Password' value={password} onChange={e => setPassword(e.target.value)} className=' pl-6 min-w-[300px] w-[30%] h-[2.5rem] rounded-xl focus:outline-none border-2 border-gray-300 mt-1' />
                                 </div>
-                                <StyledButton type='submit' >
+                                <button type='submit' className="w-[100%] md:w-[100%] bg-slate-700 text-white font-bold h-[2.5rem] rounded-xl hover:border  hover:border-blue-950 hover:text-blue-950 hover:bg-white ease-in-out duration-300 flex justify-center items-center gap-4 hover:gap-7">
                                     <span>
                                         Login
                                     </span>
@@ -166,21 +127,24 @@ export default function Login() {
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5" />
                                     </svg>
 
-                                </StyledButton>
-                            </form>
+                                </button>
+                                <Link href={'https://ecom-admin-panel.vercel.app/'} className="w-[100%] md:w-[100%] bg-slate-700 text-white font-bold h-[2.5rem] rounded-xl hover:border  hover:border-blue-950 hover:text-blue-950 hover:bg-white ease-in-out duration-300 flex justify-center items-center gap-4 hover:gap-7">
+                                    <span>
+                                        Admin Login
+                                    </span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 hidden">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5" />
+                                    </svg>
 
-                            <div className='flex flex-col px-8 pb-4'>
-                                New to NextZone?
-                                <Link href={'/register'} className='text-blue-600 '>
-                                    Regiter here!
                                 </Link>
-                            </div>
+                            </form>
+                            <span className='font-bold text-gray-500 mt-[-20px]'>New Here? <span className='text-blue-600 cursor-pointer' onClick={() => router.push("/register")}>Register</span></span>
                         </div>
                     </motion.div>
                 </div>
             </Center>
 
 
-        </>
+        </div>
     )
 }
