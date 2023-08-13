@@ -10,6 +10,8 @@ import { useState, useEffect, useContext } from 'react';
 import Head from 'next/head';
 import Footer from '@/components/Footer';
 import { Toaster, toast } from 'react-hot-toast';
+import CustomizationButton from '@/components/CustomizationButton';
+import Marquee from '@/components/Marquee';
 export default function Home({ featuredProduct, newProducts }) {
   const { loggedIn, setLoggedInUser, ConnectToWallet, connectWallet, currentAccount
   } = useContext(CartContext);
@@ -54,6 +56,7 @@ export default function Home({ featuredProduct, newProducts }) {
       />
       {loggedIn ?
         <div div className='overflow-x-hidden'>
+          <Marquee />
           <Navbar />
           <Featured product={featuredProduct} />
           <NewProducts products={newProducts} />

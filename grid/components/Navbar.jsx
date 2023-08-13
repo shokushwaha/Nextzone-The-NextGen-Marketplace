@@ -12,7 +12,7 @@ function Nav() {
     const activeLink = ' hover:bg-gray-800 text-white px-3 py-1 flex flex-col items-center font-bold border-b-2 border-gray-200';
     const router = useRouter();
     return (
-        <div className="bg-neutral-800 flex items-center p-2" >
+        <div className="bg-neutral-800 flex items-center p-2 mt-[-10px] pt-4" >
 
             <Center>
                 <motion.div

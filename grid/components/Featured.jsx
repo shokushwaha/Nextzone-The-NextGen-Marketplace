@@ -6,6 +6,7 @@ import CartIcon from "./icons/CartIcon";
 import { useContext, useEffect } from "react";
 import { CartContext } from "./CartContext";
 import { motion } from "framer-motion";
+
 const Bg = styled.div`
 color: #fff;
 background-color: #222;
