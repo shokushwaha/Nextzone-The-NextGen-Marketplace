@@ -1,7 +1,6 @@
 import { CartContext } from "@/components/CartContext";
 import Center from "@/components/Center";
 import Header from "@/components/Header";
-import Navbar from "@/components/Navbar";
 import { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import axios from "axios";
@@ -292,8 +291,7 @@ export default function CartPage() {
                     <title>NextZone - Cart</title>
 
                 </Head>
-
-                <Navbar />
+                <Nav />
 
                 <Center>
                     <Toaster
@@ -326,7 +324,7 @@ export default function CartPage() {
 
     return (
         <div className="overflow-x-hidden">
-            <Header />
+            <Nav />
             <Center>
                 <motion.div
                     className="container text-center"

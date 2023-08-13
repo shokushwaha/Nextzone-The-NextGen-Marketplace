@@ -21,26 +21,26 @@ const Rewards = () => {
     const [redemmedTokens, setRedemmedTokens] = useState([]);
 
 
-    function formatDate(date) {
-        const d = new Date(date);
-        const day = d.getDate().toString().padStart(2, '0');
-        const month = (d.getMonth() + 1).toString().padStart(2, '0');
-        const year = d.getFullYear().toString().slice(-2);
-
-        return `${day}-${month}-${year}`;
-    }
-
     async function fetchDetails() {
-        console.log(currentAccount)
         const tok = await axios.post('/api/fetchtokens', { currentAccount });
         const redemeedTokens = await axios.post('/api/fetchredemmedrewards', { currentAccount })
+
+
+        const tokData = tok.data.filter(item => {
+            const tokDate = new Date(item.createdAt);
+            const currDate = Date.now();
+            const isExpired = tokDate.getTime() + 7 * 24 * 60 * 60 * 1000 > currDate;
+            return isExpired;
+        });
         const expTokData = tok.data.filter(item => {
             const tokDate = new Date(item.createdAt);
             const currDate = Date.now();
-            return tokDate + 7 < currDate;
+            const isExpired = tokDate.getTime() + 7 * 24 * 60 * 60 * 1000 < currDate;
+            return isExpired;
         });
 
-        setTokens(tok.data)
+        console.log(expTokData)
+        setTokens(tokData)
         setExpiredTokens(expTokData)
         setRedemmedTokens(redemeedTokens.data)
     }
@@ -89,7 +89,7 @@ const Rewards = () => {
                 <button className='bg-neutral-800 text-gray-200 w-48 px-4 py-1 rounded-lg shadow-2xl mt-4 mx-auto'>Continue shopping...</button>
             </span>
             }
-            <div className='grid grid-cols-5 w-[80vw] mx-auto place-items-center'>
+            <div className='flex  w-[80vw] mx-auto justify-center items-center flex-wrap'>
                 {tokens && tokens.map(token => (
                     <>
                         <TokenCard name={token.couponName} symbol={token.couponSymbol} price={token.couponPrice} issued={token.createdAt} hash={token.transactionHash} />
@@ -100,24 +100,25 @@ const Rewards = () => {
             {/* </Center> */}
 
 
+            {/* <Center> */}
             <div>
                 <span className='flex items-center justify-center text-2xl font-bold mt-4'>Expired Tokens</span>
-                <Center>
-                    {expiredTokens.length === 0 && <span className='text-gray-400 flex items-center justify-center mt-4'>
+                {expiredTokens.length === 0 && <span className='text-gray-400 flex items-center justify-center mt-4'>
 
-                        Don't have any expired tokens!
-                    </span>
+                    Don't have any expired tokens!
+                </span>
+                }
+                <div className='flex  w-[80vw] mx-auto justify-center items-center flex-wrap'>
+
+                    {expiredTokens && expiredTokens.map(token => (
+                        <>
+                            <ExpiredToken name={token.couponName} symbol={token.couponSymbol} price={token.couponPrice} issued={token.createdAt} />
+                        </>
+                    ))
                     }
-                    <div className='grid grid-cols-6 content-between'>
-                        {expiredTokens && expiredTokens.map(token => (
-                            <>
-                                <ExpiredToken name={token.couponName} symbol={token.couponSymbol} price={token.couponPrice} issued={token.createdAt} />
-                            </>
-                        ))
-                        }
-                    </div>
-                </Center>
+                </div>
             </div>
+            {/* </Center> */}
 
 
             <div className='mx-auto w-[80vw]'>
@@ -128,7 +129,7 @@ const Rewards = () => {
                     You havn't redemmed any tokens yet!
                 </span>
                 }
-                <div className='grid grid-cols-6'>
+                <div className='flex  w-[80vw] mx-auto justify-center items-center flex-wrap '>
                     {redemmedTokens && redemmedTokens.map(token => (
                         <>
                             <RedemmedTokens name={token.couponName} symbol={token.couponSymbol} price={token.couponPrice} usedOn={token.usedOn} />

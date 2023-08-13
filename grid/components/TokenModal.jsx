@@ -40,7 +40,7 @@ const TokenModal = ({ ftName, ftSymbol, ftAmnt, transactionHash }) => {
                     </span>
                 </span>
 
-                <button onClick={goToEtherScan} className='bg-neutral-800 text-gray-200 mt-4 px-2 rounded-lg shadow-lg mb-4'>
+                <button onClick={goToEtherScan} className='bg-neutral-800 text-gray-200 mt-4 px-2 rounded-lg shadow-lg mb-2'>
                     View Token Reciept
                 </button>
             </div>

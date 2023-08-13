@@ -615,7 +615,7 @@ export default function Ordersuccess() {
 
                     <ScratchCard {...settings}>
                         <TokenModal ftName={ftName} ftSymbol={ftSymbol} ftAmnt={ftAmnt} transactionHash={transactionHash} />
-                        <button onClick={() => setModalOpen(false)} className=' absolute left-[160px] bg-yellow-400 px-8 py-1 mt-3 rounded-md shadow-xl hover:bg-yellow-500'>Ok</button>
+                        <button onClick={() => setModalOpen(false)} className=' absolute left-[160px] bg-yellow-400 px-8 py-1 mt-1 rounded-md shadow-xl hover:bg-yellow-500'>Ok</button>
                     </ScratchCard>
 
                 </div> : null
