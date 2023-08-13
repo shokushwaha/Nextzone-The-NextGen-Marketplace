@@ -12,11 +12,11 @@ function Nav() {
     const activeLink = ' hover:bg-gray-800 text-white px-3 py-1 flex flex-col items-center font-bold border-b-2 border-gray-200';
     const router = useRouter();
     return (
-        <div className="bg-neutral-800 flex items-center p-2" >
+        <div className="bg-neutral-800 flex items-center p-2 justify-center" >
 
-            <Center>
+            {/* <Center> */}
                 <motion.div
-                    className="container text-center"
+                    className=" text-center"
                     initial={{ opacity: 0, y: "-200px" }}
                     animate={{ opacity: 1, y: "0px" }}
                     exit={{ opacity: 0, y: "-200px" }}
@@ -234,7 +234,7 @@ function Nav() {
 
                     </div>
                 </motion.div>
-            </Center>
+            {/* </Center> */}
         </div>
     );
 }

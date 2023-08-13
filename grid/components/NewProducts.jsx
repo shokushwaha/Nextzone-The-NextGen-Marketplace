@@ -4,9 +4,10 @@ import styled from "styled-components";
 import ProductBox from "./ProductBox";
 import Center from "./Center";
 import { motion } from "framer-motion";
+
 const ProductsGrid = styled.div`
 display: grid;
-grid-template-columns: 1fr 1fr 1fr 1fr;
+grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 gap: 30px;
 padding-top: 30px;
 padding-bottom: 20px;
@@ -47,7 +48,7 @@ export default function NewProducts({ products }) {
         <>
             <Center>
                 <motion.div
-                    className="container text-center"
+                    className="text-center"
                     initial={{ opacity: 0, x: "2000px" }}
                     animate={{ opacity: 1, x: "0px" }}
                     exit={{ opacity: 0, x: "2000px" }}
