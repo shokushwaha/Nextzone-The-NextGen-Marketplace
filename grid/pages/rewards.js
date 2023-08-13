@@ -74,7 +74,7 @@ const Rewards = () => {
                 <button className='bg-neutral-800 text-gray-200 w-48 px-4 py-1 rounded-lg shadow-2xl mt-4 mx-auto'>Continue shopping...</button>
             </span>
             }
-            <div className='grid grid-cols-5 w-[80vw] mx-auto'>
+            <div className='grid grid-cols-5 w-[80vw] mx-auto place-items-center'>
                 {tokens && tokens.map(token => (
                     <>
                         <TokenCard name={token.couponName} symbol={token.couponSymbol} price={token.couponPrice} issued={token.createdAt} expiry={token.expiryDate} hash={token.transactionHash} />
@@ -85,7 +85,7 @@ const Rewards = () => {
             {/* </Center> */}
 
 
-            <div>
+            {/* <div>
                 <span className='flex items-center justify-center text-2xl font-bold mt-4'>Expired Tokens</span>
                 <Center>
                     {expiredTokens.length === 0 && <span className='text-gray-400 flex items-center justify-center mt-4'>
@@ -93,7 +93,7 @@ const Rewards = () => {
                         Don't have any expired tokens!
                     </span>
                     }
-                    <div className='grid grid-cols-4'>
+                    <div className='grid grid-cols-4 content-between'>
                         {expiredTokens && expiredTokens.map(token => (
                             <>
                                 <ExpiredToken name={token.couponName} symbol={token.couponSymbol} price={token.couponPrice} issued={token.createdAt} expiry={token.expiryDate} />
@@ -102,7 +102,7 @@ const Rewards = () => {
                         }
                     </div>
                 </Center>
-            </div>
+            </div> */}
 
 
             <div className='mx-auto w-[80vw]'>

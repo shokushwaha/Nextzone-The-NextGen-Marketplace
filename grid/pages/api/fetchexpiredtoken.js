@@ -10,7 +10,7 @@ export default async function handler(req, res) {
         const { currentAccount } = req.body;
         const tokens = await Reward.find({ custWallet: currentAccount });
         const currentDate = new Date();
-        const filteredTokens = tokens.filter(token => currentDate > token.expiryDate);
+        const filteredTokens = tokens.filter(token => currentDate >= token.expiryDate);
         res.json(filteredTokens);
     }
 
