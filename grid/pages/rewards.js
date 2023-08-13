@@ -66,9 +66,12 @@ const Rewards = () => {
             </div>
 
             <Center>
-                {tokens.length === 0 && <span>
+                {tokens.length === 0 && <span className='flex flex-col'>
+                    <span className='text-gray-800 font-bold'>
 
-                    Loading rewards
+                        You don't have any tokens!!
+                    </span>
+                    <button className='bg-neutral-800 text-gray-200 w-48 px-4 py-1 rounded-lg shadow-2xl mt-4 mx-auto'>Continue shopping...</button>
                 </span>
                 }
                 <div className='grid grid-cols-4'>
