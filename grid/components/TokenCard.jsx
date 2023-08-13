@@ -28,7 +28,7 @@ const TokenCard = ({ name, symbol, price, issued, expiry, hash }) => {
         <>
 
             <div className='flex flex-col shadow-xl p-2  rounded-md m-4 items-center bg-slate-100 w-5/6 hover:scale-105 transition delay-150 duration-300 ease-in-out '>
-                <div className=' w-36 rounded-md   '>
+                <div className=' w-44 rounded-md   '>
                     <img src={
                         price * 10 > 0 && price * 10 < 1000
                             ? 'https://res.cloudinary.com/dt21djrjq/image/upload/v1691836232/bronze_b9ryxr.jpg'

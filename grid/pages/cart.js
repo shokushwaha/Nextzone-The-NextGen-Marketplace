@@ -242,12 +242,15 @@ export default function CartPage() {
             );
         }
         else {
-
+            let temp = 0
             router.push(
                 {
                     pathname:
                         '/ordersuccess',
-                    query: { name: dp }
+                    query: {
+                        name: dp,
+                        amnt: temp
+                    }
                 }
 
             );

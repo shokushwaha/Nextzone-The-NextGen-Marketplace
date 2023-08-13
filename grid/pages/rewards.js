@@ -65,24 +65,24 @@ const Rewards = () => {
                 NextZone Rewards
             </div>
 
-            <Center>
-                {tokens.length === 0 && <span className='flex flex-col'>
-                    <span className='text-gray-800 font-bold'>
+            {/* <Center> */}
+            {tokens.length === 0 && <span className='flex flex-col'>
+                <span className='text-gray-800 font-bold'>
 
-                        You don't have any tokens!!
-                    </span>
-                    <button className='bg-neutral-800 text-gray-200 w-48 px-4 py-1 rounded-lg shadow-2xl mt-4 mx-auto'>Continue shopping...</button>
+                    You don't have any tokens!!
                 </span>
+                <button className='bg-neutral-800 text-gray-200 w-48 px-4 py-1 rounded-lg shadow-2xl mt-4 mx-auto'>Continue shopping...</button>
+            </span>
+            }
+            <div className='grid grid-cols-5 w-[80vw] mx-auto'>
+                {tokens && tokens.map(token => (
+                    <>
+                        <TokenCard name={token.couponName} symbol={token.couponSymbol} price={token.couponPrice} issued={token.createdAt} expiry={token.expiryDate} hash={token.transactionHash} />
+                    </>
+                ))
                 }
-                <div className='grid grid-cols-4'>
-                    {tokens && tokens.map(token => (
-                        <>
-                            <TokenCard name={token.couponName} symbol={token.couponSymbol} price={token.couponPrice} issued={token.createdAt} expiry={token.expiryDate} hash={token.transactionHash} />
-                        </>
-                    ))
-                    }
-                </div>
-            </Center>
+            </div>
+            {/* </Center> */}
 
 
             <div>
@@ -105,24 +105,24 @@ const Rewards = () => {
             </div>
 
 
-            <div>
+            <div className='mx-auto w-[80vw]'>
                 <span className='flex items-center justify-center text-2xl font-bold mt-4'>Redemmed Tokens</span>
-                <Center>
-                    {redemmedTokens.length === 0 && <span className='text-gray-400 flex items-center justify-center mt-4'>
 
-                        You havn't redemmed any tokens yet!
-                    </span>
+                {redemmedTokens.length === 0 && <span className='text-gray-400 flex items-center justify-center mt-4'>
+
+                    You havn't redemmed any tokens yet!
+                </span>
+                }
+                <div className='grid grid-cols-6'>
+                    {redemmedTokens && redemmedTokens.map(token => (
+                        <>
+                            <RedemmedTokens name={token.couponName} symbol={token.couponSymbol} price={token.couponPrice} usedOn={token.usedOn} />
+
+                        </>
+                    ))
                     }
-                    <div className='grid grid-cols-4'>
-                        {redemmedTokens && redemmedTokens.map(token => (
-                            <>
-                                <RedemmedTokens name={token.couponName} symbol={token.couponSymbol} price={token.couponPrice} usedOn={token.usedOn} />
+                </div>
 
-                            </>
-                        ))
-                        }
-                    </div>
-                </Center>
             </div>
 
         </>
