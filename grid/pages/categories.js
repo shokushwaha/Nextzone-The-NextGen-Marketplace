@@ -72,15 +72,18 @@ export default function Categories({ allCategories, allProducts }) {
 
                         {categories.length && categories.map(cat => (
                             <>
-                                <button
+                                <button onClick={() => { setFilterCategory(cat.name) }}
                                     className='bg-white rounded-md  shadow-md px-1 hover:bg-gray-800 hover:text-gray-200'
                                 > {cat.name}</button>
                             </>
                         ))}
+                        <button onClick={() => { setFilterCategory("") }}
+                            className='bg-white rounded-md  shadow-md px-1 hover:bg-gray-800 hover:text-gray-200'
+                        > Reset Filters</button>
                     </div>
 
                     <div>
-                        {categories.length > 0 && categories.map((category) => {
+                        {categories.length > 0 && categories.filter(ct => ct.name.includes(filterCategory)).map((category) => {
                             return (
                                 <div key={category._id}>
                                     <div className="text-blue-950 font-extrabold text-3xl flex gap-3 items-center justify-center md:ml-6 md:justify-normal mt-6">
