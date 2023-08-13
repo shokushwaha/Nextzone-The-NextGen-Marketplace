@@ -8,9 +8,10 @@ import { motion } from "framer-motion";
 const ProductsGrid = styled.div`
 display: grid;
 grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-gap: 30px;
+gap: 20px;
 padding-top: 30px;
 padding-bottom: 20px;
+margin-left:-60px;
 
 
 

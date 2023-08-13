@@ -13,9 +13,10 @@ import { useState } from "react";
 const ProductsGrid = styled.div`
 display: grid;
 grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-gap: 30px;
+gap: 20px;
 padding-top: 30px;
 padding-bottom: 20px;
+margin-left:-60px;
 
     @media screen and (max-width: 700px) {
         display: grid;
@@ -65,16 +66,8 @@ export default function ProductsPage({ products }) {
                         exit={{ opacity: 0 }}
                         transition={{ duration: 1, delay: 0.5 }}
                     >
-                        {/* <input
-                            type="text"
-                            value={searchTerm}
-                            onChange={handleSearch}
-                            placeholder="Search by product name"
-                            className="mt-4 w-1/2 flex items-center justify-center px-4 py-2 rounded-md shadow placeholder:text-gray-400 border-solid border-l-2 border-b-2 border-neutral-700"
-                        /> */}
 
-
-                        <form class="flex items-center mt-6">
+                        <form class="flex items-center mt-6 ml-[-60px]">
                             <label for="voice-search" class="sr-only">Search</label>
                             <div class="relative">
                                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">

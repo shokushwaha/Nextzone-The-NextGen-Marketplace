@@ -4,6 +4,7 @@ import CartIcon from "./icons/CartIcon";
 import Link from "next/link";
 import { useContext } from "react";
 import { CartContext } from "./CartContext";
+
 const WhiteBox = styled(Link)`
 background-color: #fff;
 padding: 10px;
@@ -14,6 +15,7 @@ height: 170px;
 border-radius: 10px;
 `;
 const ProductWrapper = styled.div`
+width:240px;
 `;
 
 const StyledTitle = styled(Link)`
@@ -49,6 +51,10 @@ const Discount = styled.div`
 font-size: 0.8rem;
 color: gray;
 background-color: yellow;
+width:60px;
+display: flex ;
+justify-content: center ;
+align-items :center;
 `;
 
 const StyledButton = styled.button`
