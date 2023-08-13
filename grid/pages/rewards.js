@@ -19,13 +19,29 @@ const Rewards = () => {
     const [tokens, setTokens] = useState([]);
     const [expiredTokens, setExpiredTokens] = useState([]);
     const [redemmedTokens, setRedemmedTokens] = useState([]);
+
+
+    function formatDate(date) {
+        const d = new Date(date);
+        const day = d.getDate().toString().padStart(2, '0');
+        const month = (d.getMonth() + 1).toString().padStart(2, '0');
+        const year = d.getFullYear().toString().slice(-2);
+
+        return `${day}-${month}-${year}`;
+    }
+
     async function fetchDetails() {
         console.log(currentAccount)
         const tok = await axios.post('/api/fetchtokens', { currentAccount });
-        const expTok = await axios.post('/api/fetchexpiredtoken', { currentAccount });
         const redemeedTokens = await axios.post('/api/fetchredemmedrewards', { currentAccount })
+        const expTokData = tok.data.filter(item => {
+            const tokDate = new Date(item.createdAt);
+            const currDate = Date.now();
+            return tokDate + 7 < currDate;
+        });
+
         setTokens(tok.data)
-        setExpiredTokens(expTok.data)
+        setExpiredTokens(expTokData)
         setRedemmedTokens(redemeedTokens.data)
     }
     useEffect(() => {
@@ -76,7 +92,7 @@ const Rewards = () => {
             <div className='grid grid-cols-5 w-[80vw] mx-auto place-items-center'>
                 {tokens && tokens.map(token => (
                     <>
-                        <TokenCard name={token.couponName} symbol={token.couponSymbol} price={token.couponPrice} issued={token.createdAt} expiry={token.expiryDate} hash={token.transactionHash} />
+                        <TokenCard name={token.couponName} symbol={token.couponSymbol} price={token.couponPrice} issued={token.createdAt} hash={token.transactionHash} />
                     </>
                 ))
                 }
@@ -84,7 +100,7 @@ const Rewards = () => {
             {/* </Center> */}
 
 
-            {/* <div>
+            <div>
                 <span className='flex items-center justify-center text-2xl font-bold mt-4'>Expired Tokens</span>
                 <Center>
                     {expiredTokens.length === 0 && <span className='text-gray-400 flex items-center justify-center mt-4'>
@@ -92,16 +108,16 @@ const Rewards = () => {
                         Don't have any expired tokens!
                     </span>
                     }
-                    <div className='grid grid-cols-4 content-between'>
+                    <div className='grid grid-cols-6 content-between'>
                         {expiredTokens && expiredTokens.map(token => (
                             <>
-                                <ExpiredToken name={token.couponName} symbol={token.couponSymbol} price={token.couponPrice} issued={token.createdAt} expiry={token.expiryDate} />
+                                <ExpiredToken name={token.couponName} symbol={token.couponSymbol} price={token.couponPrice} issued={token.createdAt} />
                             </>
                         ))
                         }
                     </div>
                 </Center>
-            </div> */}
+            </div>
 
 
             <div className='mx-auto w-[80vw]'>

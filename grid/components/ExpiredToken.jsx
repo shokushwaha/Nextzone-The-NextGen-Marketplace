@@ -1,9 +1,30 @@
 import React from 'react'
 
-const ExpiredToken = ({ name, symbol, price, issued, expiry, hash }) => {
+const ExpiredToken = ({ name, symbol, price, issued, hash }) => {
+    function formatDate(inputDateString) {
+        const months = [
+            'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+            'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+        ];
+
+        const inputDate = new Date(inputDateString);
+        const day = inputDate.getDate();
+        const month = inputDate.getMonth() + 1;
+        const year = inputDate.getFullYear();
+
+        const formattedDate = `${day < 10 ? '0' : ''}${day}-${month < 10 ? '0' : ''}${month}-${year}`;
+
+        return formattedDate;
+    }
+    let issueDate = new Date(issued);
+    issueDate = formatDate(issueDate.toDateString().substring(4, 15))
+    let expiryDate = new Date(issued);
+    expiryDate.setDate(expiryDate.getDate() + 7);
+    expiryDate = formatDate(expiryDate.toDateString().substring(4, 15))
+
     return (
         <>
-            <div className='flex flex-col shadow-xl p-2  rounded-md m-4 items-center bg-slate-100 w-5/6 hover:scale-105 transition delay-150 duration-300 ease-in-out '>
+            <div className='flex flex-col shadow-xl p-2  rounded-md m-4 items-center bg-slate-100 w-5/6 hover:scale-105 transition delay-150 duration-300 ease-in-out opacity-60'>
                 <div className=' w-32 rounded-md   '>
                     <img src={
                         price * 10 > 0 && price * 10 < 1000
@@ -40,7 +61,7 @@ const ExpiredToken = ({ name, symbol, price, issued, expiry, hash }) => {
                             Issued :
                         </span>
                         <span className=''>
-                            {issued.substr(0, 10).split('-').reverse().join('-')}
+                            {issueDate}
                         </span>
                     </span>
                     <span className='flex items-center '>
@@ -48,7 +69,7 @@ const ExpiredToken = ({ name, symbol, price, issued, expiry, hash }) => {
                             Expired:
                         </span>
                         <span className=''>
-                            {expiry.substr(0, 10).split('-').reverse().join('-')}
+                            {expiryDate}
                         </span>
                     </span>
 

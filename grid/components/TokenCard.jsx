@@ -1,11 +1,31 @@
 import Image from 'next/image'
 import React, { useEffect } from 'react'
 
-const TokenCard = ({ name, symbol, price, issued, expiry, hash }) => {
+const TokenCard = ({ name, symbol, price, issued, hash }) => {
     const goToEtherScan = (url) => {
         window.open(`https://mumbai.polygonscan.com/tx/${url}`, '_blank');
     }
 
+    function formatDate(inputDateString) {
+        const months = [
+            'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+            'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+        ];
+
+        const inputDate = new Date(inputDateString);
+        const day = inputDate.getDate();
+        const month = inputDate.getMonth() + 1;
+        const year = inputDate.getFullYear();
+
+        const formattedDate = `${day < 10 ? '0' : ''}${day}-${month < 10 ? '0' : ''}${month}-${year}`;
+
+        return formattedDate;
+    }
+    let issueDate = new Date(issued);
+    issueDate = formatDate(issueDate.toDateString().substring(4, 15))
+    let expiryDate = new Date(issued);
+    expiryDate.setDate(expiryDate.getDate() + 7);
+    expiryDate = formatDate(expiryDate.toDateString().substring(4, 15))
 
 
     const dynamicColor = name === "Gold Token"
@@ -49,8 +69,6 @@ const TokenCard = ({ name, symbol, price, issued, expiry, hash }) => {
                             {name}
                         </span>
                     </span>
-
-
                     <span className='flex items-center gap-2'>
                         <span className='text-gray-500 font-bold'>
                             Value:
@@ -64,7 +82,7 @@ const TokenCard = ({ name, symbol, price, issued, expiry, hash }) => {
                             Issued :
                         </span>
                         <span className=''>
-                            {issued.substr(0, 10).split('-').reverse().join('-')}
+                            {issueDate}
                         </span>
                     </span>
                     <span className='flex items-center '>
@@ -72,7 +90,7 @@ const TokenCard = ({ name, symbol, price, issued, expiry, hash }) => {
                             Expires:
                         </span>
                         <span className=''>
-                            {expiry.substr(0, 10).split('-').reverse().join('-')}
+                            {expiryDate}
                         </span>
                     </span>
 
