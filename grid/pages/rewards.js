@@ -12,9 +12,7 @@ import Footer from '@/components/Footer';
 import TokenCard from '@/components/TokenCard';
 import RedemmedTokens from '@/components/RedemmedTokens';
 import ExpiredToken from '@/components/ExpiredToken';
-
-
-
+import TermsAndConditions from '@/components/TermsAndConditions';
 
 const Rewards = () => {
     const { currentAccount } = useContext(CartContext);
@@ -34,6 +32,7 @@ const Rewards = () => {
         fetchDetails();
     }, [])
     return (
+
         <>
             <Head>
                 <title>NextZone - Rewards</title>
@@ -41,7 +40,7 @@ const Rewards = () => {
             </Head>
             <Nav />
 
-
+            <TermsAndConditions />
 
             <div className='flex items-center justify-end  py-2 pr-2 bg-neutral-800'>
                 <span className='mr-2'>
@@ -124,6 +123,7 @@ const Rewards = () => {
                 </div>
 
             </div>
+            <Footer />
 
         </>
     )

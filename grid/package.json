@@ -38,6 +38,8 @@
     "stripe": "^12.5.0",
     "style-loader": "^3.3.3",
     "styled-components": "^5.3.11",
+    "sweetalert": "^2.1.2",
+    "sweetalert2": "^11.7.22",
     "uuid4": "^2.0.3",
     "web3modal": "^1.9.12"
   },
