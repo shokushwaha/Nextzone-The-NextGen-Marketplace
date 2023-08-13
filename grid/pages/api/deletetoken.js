@@ -2,6 +2,7 @@
 
 import { Reward } from '@/models/Reward';
 import { mongooseConnect } from '@/lib/mongoose';
+import { RedeemedReward } from '@/models/RedemmedReward';
 
 export default async function handler(req, res) {
     await mongooseConnect();
@@ -10,10 +11,19 @@ export default async function handler(req, res) {
 
         const { amt } = req.body;
 
-
+        const redeemed = await Reward.findOne({ couponPrice: amt });
         const tok = await Reward.deleteOne({ couponPrice: amt });
 
-        console.log(tok)
+        const redeemdReward = new RedeemedReward({
+            custWallet: redeemed.custWallet,
+            couponName: redeemed.couponName,
+            couponPrice: redeemed.couponPrice,
+            couponSymbol: redeemed.couponSymbol,
+            transactionHash: redeemed.transactionHash,
+            usedOn: Date.now()
+        });
+        await redeemdReward.save();
+
         res.json(tok);
     }
 

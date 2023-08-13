@@ -10,6 +10,9 @@ import styled from 'styled-components';
 import Head from 'next/head';
 import Footer from '@/components/Footer';
 import TokenCard from '@/components/TokenCard';
+import RedemmedTokens from '@/components/RedemmedTokens';
+import ExpiredToken from '@/components/ExpiredToken';
+
 
 
 
@@ -17,15 +20,17 @@ const Rewards = () => {
     const { currentAccount } = useContext(CartContext);
     const [tokens, setTokens] = useState([]);
     const [expiredTokens, setExpiredTokens] = useState([]);
+    const [redemmedTokens, setRedemmedTokens] = useState([]);
     async function fetchDetails() {
         console.log(currentAccount)
         const tok = await axios.post('/api/fetchtokens', { currentAccount });
         const expTok = await axios.post('/api/fetchexpiredtoken', { currentAccount });
+        const redemeedTokens = await axios.post('/api/fetchredemmedrewards', { currentAccount })
         setTokens(tok.data)
         setExpiredTokens(expTok.data)
+        setRedemmedTokens(redemeedTokens.data)
     }
     useEffect(() => {
-
         fetchDetails();
     }, [])
     return (
@@ -88,7 +93,28 @@ const Rewards = () => {
                     <div className='grid grid-cols-4'>
                         {expiredTokens && expiredTokens.map(token => (
                             <>
-                                <TokenCard name={token.couponName} symbol={token.couponSymbol} price={token.couponPrice} issued={token.createdAt} expiry={token.expiryDate} />
+                                <ExpiredToken name={token.couponName} symbol={token.couponSymbol} price={token.couponPrice} issued={token.createdAt} expiry={token.expiryDate} />
+                            </>
+                        ))
+                        }
+                    </div>
+                </Center>
+            </div>
+
+
+            <div>
+                <span className='flex items-center justify-center text-2xl font-bold mt-4'>Redemmed Tokens</span>
+                <Center>
+                    {redemmedTokens.length === 0 && <span className='text-gray-400 flex items-center justify-center mt-4'>
+
+                        You havn't redemmed any tokens yet!
+                    </span>
+                    }
+                    <div className='grid grid-cols-4'>
+                        {redemmedTokens && redemmedTokens.map(token => (
+                            <>
+                                <RedemmedTokens name={token.couponName} symbol={token.couponSymbol} price={token.couponPrice} usedOn={token.usedOn} />
+
                             </>
                         ))
                         }
