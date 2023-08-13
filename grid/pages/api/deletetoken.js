@@ -13,7 +13,7 @@ export default async function handler(req, res) {
 
         const redeemed = await Reward.findOne({ couponPrice: amt });
         const tok = await Reward.deleteOne({ couponPrice: amt });
-
+        console.log(redeemed)
         const redeemdReward = new RedeemedReward({
             custWallet: redeemed.custWallet,
             couponName: redeemed.couponName,

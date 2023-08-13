@@ -5,11 +5,30 @@ const TokenCard = ({ name, symbol, price, issued, expiry, hash }) => {
     const goToEtherScan = (url) => {
         window.open(`https://mumbai.polygonscan.com/tx/${url}`, '_blank');
     }
+
+
+
+    const dynamicColor = name === "Gold Token"
+        ? 'text-yellow-500'
+        : name === "Silver Token"
+            ? 'text-slate-400'
+            : name === "Bronze Token"
+                ? 'text-yellow-800'
+                : 'bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500';
+
+    const dynamicBG = name === "Gold Token"
+        ? 'bg-yellow-500'
+        : name === "Silver Token"
+            ? 'bg-slate-400'
+            : name === "Bronze Token"
+                ? 'bg-yellow-800'
+                : 'bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500';
+
     return (
         <>
 
             <div className='flex flex-col shadow-xl p-2  rounded-md m-4 items-center bg-slate-100 w-5/6 hover:scale-105 transition delay-150 duration-300 ease-in-out '>
-                <div className=' w-32 rounded-md   '>
+                <div className=' w-36 rounded-md   '>
                     <img src={
                         price * 10 > 0 && price * 10 < 1000
                             ? 'https://res.cloudinary.com/dt21djrjq/image/upload/v1691836232/bronze_b9ryxr.jpg'
@@ -26,7 +45,7 @@ const TokenCard = ({ name, symbol, price, issued, expiry, hash }) => {
                 </div>
                 <div className='flex items-center justify-center flex-col'>
                     <span className='flex items-center gap-2'>
-                        <span className='font-extrabold uppercase mb-2 text-lg'>
+                        <span className={`${dynamicColor} font-extrabold uppercase mb-2 text-lg`}>
                             {name}
                         </span>
                     </span>
@@ -57,7 +76,7 @@ const TokenCard = ({ name, symbol, price, issued, expiry, hash }) => {
                         </span>
                     </span>
 
-                    <button onClick={() => goToEtherScan(hash)} >View Reciept</button>
+                    <button onClick={() => goToEtherScan(hash)} className={`${dynamicBG} text-gray-200 px-2 mt-2 rounded-md shadow-xl mb-2 p-1`}>View Reciept</button>
                 </div>
 
             </div>
