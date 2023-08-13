@@ -14,7 +14,7 @@ const TokenCard = ({ name, symbol, price, issued, expiry, hash }) => {
             ? 'text-slate-400'
             : name === "Bronze Token"
                 ? 'text-yellow-800'
-                : 'bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500';
+                : 'font-extrabold text-transparent  bg-clip-text bg-gradient-to-r from-yellow-500 to-pink-600';
 
     const dynamicBG = name === "Gold Token"
         ? 'bg-yellow-500'
@@ -22,7 +22,7 @@ const TokenCard = ({ name, symbol, price, issued, expiry, hash }) => {
             ? 'bg-slate-400'
             : name === "Bronze Token"
                 ? 'bg-yellow-800'
-                : 'bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500';
+                : 'bg-gradient-to-r from-yellow-500 to-pink-600';
 
     return (
         <>
