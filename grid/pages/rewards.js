@@ -39,7 +39,7 @@ const Rewards = () => {
             return isExpired;
         });
 
-        console.log(expTokData)
+        console.log(tok.data)
         setTokens(tokData)
         setExpiredTokens(expTokData)
         setRedemmedTokens(redemeedTokens.data)

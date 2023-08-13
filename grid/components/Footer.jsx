@@ -76,7 +76,7 @@ const Footer = () => {
                             }}
                         ></TextField>
                         <Button variant='contained' sx={{ borderRadius: '2px', '&:hover': { bgcolor: '#57606f' } }}
-                        >SUSCRIBE</Button>
+                        >SUBSCRIBE</Button>
                     </Stack>
                     <Typography fontWeight={'700'} pt='4%'>FOLLOW US</Typography>
                     <Stack direction={'row'} gap={0.2}>
@@ -87,10 +87,10 @@ const Footer = () => {
                     </Stack>
                 </Stack>
             </Stack>
-            
-            <Box height={'1px'} width='100%' bgcolor={'white'} mt='4.5%'>
-                <Typography className='bg-neutral-900 pb-2 mt-[-20px] text-gray-300 font-bold' textAlign={'center'} fontSize='13px' pt='5px'>&copy; 2023- Hack Wizards - Flipkart Grid 5.0 | All Rights Reserved</Typography>
-            </Box>
+
+            <div className='bg-neutral-900 flex items-center justify-center py-3 mt-4'>
+                &copy; 2023- Hack Wizards - Flipkart Grid 5.0 | All Rights Reserved
+            </div>
 
         </div>
     )

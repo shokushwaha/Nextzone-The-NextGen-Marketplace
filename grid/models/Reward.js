@@ -5,7 +5,6 @@ const RewardSchema = new Schema({
     couponSymbol: { type: String, required: true },
     couponPrice: { type: Number, required: true },
     transactionHash: { type: String, required: true },
-    expiryDate: { type: Date },
 
 
 }, {
