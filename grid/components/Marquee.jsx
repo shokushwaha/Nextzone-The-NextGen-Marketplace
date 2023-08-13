@@ -3,9 +3,9 @@ import React from 'react'
 const Marquee = () => {
     return (
         <>
-            <marquee behavior="scroll" direction="right" className="bg-neutral-800 py-2 "  >
+            <marquee onClick={() => window.open("https://customization-nextzone.netlify.app/", "_blank")} behavior="scroll" scrollamount="13" onmouseover="this.stop()" onmouseout="this.start()" direction="right" className="bg-neutral-800 cursor-pointer"  >
                 <span className='text-gray-100 font-extrabold text-md'>
-                    We are introducing custom clothes. Try it now!!
+                Introducing custom clothes! Finally, clothes that fit you perfectly and make you look your best. <span className='text-yellow-600'>TRY IT NOW</span>
                 </span>
             </marquee>
         </>
