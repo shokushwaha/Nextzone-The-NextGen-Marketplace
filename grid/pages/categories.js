@@ -10,6 +10,7 @@ import styled from 'styled-components'
 import Nav from '@/components/Navbar'
 import Head from 'next/head'
 import Footer from '@/components/Footer'
+import { Category } from '@/models/Category'
 const CatHead = styled.div`
 @media screen and (max-width: 650px) {
    display  :flex ;
@@ -36,50 +37,18 @@ grid-template-columns: 1fr 1fr;
    }
 `;
 
-export default function Categories({ allProducts }) {
+export default function Categories({ allCategories, allProducts }) {
 
-    const [mobileArr, setMobileArr] = useState([]);
-    const [laptopArr, setLaptopArr] = useState([]);
-    const [trimmerArr, setTrimmerArr] = useState([]);
-    const [speakerArr, setSpeakerArr] = useState([]);
-    const [tvArr, setTvArr] = useState([]);
-    const [headphonesArr, setHeadphonesArr] = useState([]);
-    const [bluetoothArr, setBluetoothArr] = useState([]);
 
+    const [categories, setCategories] = useState([]);
+    const [products, setProducts] = useState([]);
+    const [filterCategory, setFilterCategory] = useState('');
     useEffect(() => {
-        const mob = filterByCategory(allProducts, '645ccccb94bda36bef3ee31a');
-        setMobileArr(mob)
-
-        const lap = filterByCategory(allProducts, '645cd08a94bda36bef3ee421');
-        setLaptopArr(lap)
-
-        const trim = filterByCategory(allProducts, '645ccdbe94bda36bef3ee35d');
-        setTrimmerArr(trim)
-
-        const spkr = filterByCategory(allProducts, '645ccd2c94bda36bef3ee33d');
-        setSpeakerArr(spkr)
-
-        const tvs = filterByCategory(allProducts, '645ccd0794bda36bef3ee330');
-        setTvArr(tvs)
-
-        const hdhn = filterByCategory(allProducts, '645ccd9794bda36bef3ee349');
-        setHeadphonesArr(hdhn)
-
-        const blth = filterByCategory(allProducts, '645ccdf394bda36bef3ee369');
-        setBluetoothArr(blth)
-
+        setProducts(allProducts)
+        console.log(allProducts)
+        setCategories(allCategories)
     }, [])
-    function filterByCategory(data, category) {
-        return data.filter(item => item.category === category);
-    }
 
-    const targetRef1 = useRef(null);
-    const targetRef2 = useRef(null);
-    const targetRef3 = useRef(null);
-    const targetRef4 = useRef(null);
-    const targetRef5 = useRef(null);
-    const targetRef6 = useRef(null);
-    const targetRef7 = useRef(null);
 
     return (
         <>
@@ -91,80 +60,70 @@ export default function Categories({ allProducts }) {
                 <Nav />
 
                 <Center>
-                    <CatHead className='flex gap-20 items-center border-b-2 border-gray-800 '>
+                    <CatHead className='flex gap-20 items-center border-b-2 border-gray-800 mt-4 mb-4 pb-2'>
 
                         <h1 className=' flex items-center gap-2 text-4xl  ' ><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
                         </svg>
                             Categories</h1>
-                        <CatGrid className=' grid grid-cols-4 gap-2  w-full py-4'>
 
-                            <button onClick={() => targetRef1.current.scrollIntoView({ behavior: 'smooth' })}
-                                className='bg-white rounded-md  shadow-md px-1 hover:bg-gray-800 hover:text-gray-200'
-                            >TV</button>
-                            <button onClick={() => targetRef2.current.scrollIntoView({ behavior: 'smooth' })}
-                                className='bg-white rounded-md  shadow-md px-1 hover:bg-gray-800 hover:text-gray-200'>Laptop</button>
-                            <button onClick={() => targetRef3.current.scrollIntoView({ behavior: 'smooth' })}
-                                className='bg-white rounded-md shadow-md px-1 hover:bg-gray-800 hover:text-gray-200'>Trimmer</button>
-                            <button onClick={() => targetRef4.current.scrollIntoView({ behavior: 'smooth' })}
-                                className='bg-white rounded-md  shadow-md px-1 hover:bg-gray-800 hover:text-gray-200'>Headphone</button>
-                            <button onClick={() => targetRef5.current.scrollIntoView({ behavior: 'smooth' })}
-                                className='bg-white rounded-md  shadow-md px-1 hover:bg-gray-800 hover:text-gray-200'>Bluetooth</button>
-                            <button onClick={() => targetRef6.current.scrollIntoView({ behavior: 'smooth' })}
-                                className='bg-white rounded-md  shadow-md px-1 hover:bg-gray-800 hover:text-gray-200'>Speaker</button>
-                            <button onClick={() => targetRef7.current.scrollIntoView({ behavior: 'smooth' })}
-                                className='bg-white rounded-md  shadow-md px-1 hover:bg-gray-800 hover:text-gray-200'>Phone</button>
-                        </CatGrid>
                     </CatHead>
+                    <div className='grid grid-cols-5 gap-4 mt-2'>
 
-                    <motion.div
-                        className="container text-center"
-                        initial={{ opacity: 0, y: "2000px" }}
-                        animate={{ opacity: 1, y: "0px" }}
-                        exit={{ opacity: 0, y: "2000px" }}
-                        transition={{ duration: 1 }}
-                    >
+                        {categories.length && categories.map(cat => (
+                            <>
+                                <button
+                                    className='bg-white rounded-md  shadow-md px-1 hover:bg-gray-800 hover:text-gray-200'
+                                > {cat.name}</button>
+                            </>
+                        ))}
+                    </div>
 
-                        <div className='flex flex-col border-b-2 border-gray-400 pt-4' ref={targetRef1}>
-                            <h1 className='text-4xl text-bold flex items-center gap-2 border-l-2 border-gray-800 pl-2'>
-                                <CatIcon />
-                                TV</h1>
-                            <Catprod products={tvArr} />
-                        </div>
-
-                        <div className='flex flex-col border-b-2 border-gray-400 pt-4' ref={targetRef2}>
-                            <h1 className='text-4xl text-bold flex items-center gap-2 border-l-2 border-gray-800 pl-2'> <CatIcon />Laptop</h1>
-                            <Catprod products={laptopArr} />
-                        </div>
-
-                        <div className='flex flex-col border-b-2 border-gray-400 pt-2' ref={targetRef7}>
-                            <h1 className='text-4xl text-bold flex items-center gap-2 border-l-2 border-gray-800 pl-2'> <CatIcon />Mobile</h1>
-                            <Catprod products={mobileArr} />
-                        </div>
-
-                        <div className='flex flex-col border-b-2 border-gray-400 pt-2' ref={targetRef3}>
-                            <h1 className='text-4xl text-bold flex items-center gap-2 border-l-2 border-gray-800 pl-2'> <CatIcon />Trimmer</h1>
-                            <Catprod products={trimmerArr} />
-                        </div>
-
-                        <div className='flex flex-col border-b-2 border-gray-400 pt-2' ref={targetRef6}>
-                            <h1 className='text-4xl text-bold flex items-center gap-2 border-l-2 border-gray-800 pl-2'> <CatIcon />Speaker</h1>
-                            <Catprod products={speakerArr} />
-                        </div>
-
-                        <div className='flex flex-col border-b-2 border-gray-400 pt-2' ref={targetRef4}>
-                            <h1 className='text-4xl text-bold flex items-center gap-2 border-l-2 border-gray-800 pl-2'> <CatIcon />Headphone</h1>
-                            <Catprod products={headphonesArr} />
-                        </div>
-
-                        <div className='flex flex-col border-b-2 border-gray-400 pt-2' ref={targetRef5}>
-                            <h1 className='text-4xl text-bold flex items-center gap-2 border-l-2 border-gray-800 pl-2'> <CatIcon />Bluetooth</h1>
-                            <Catprod products={bluetoothArr} />
-                        </div>
-                    </motion.div>
-                </Center>
+                    <div>
+                        {categories.length > 0 && categories.map((category) => {
+                            return (
+                                <div key={category._id}>
+                                    <div className="text-blue-950 font-extrabold text-3xl flex gap-3 items-center justify-center md:ml-6 md:justify-normal mt-6">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M5.25 8.25h15m-16.5 7.5h15m-1.8-13.5l-3.9 19.5m-2.1-19.5l-3.9 19.5" />
+                                        </svg>
+                                        {category.name}
+                                    </div>
+                                    <div className="flex flex-wrap gap-3 items-center justify-center md:ml-6 md:justify-normal pt-7 pb-10 " >
+                                        {console.log(category)}
+                                        {products.length > 0 && products.filter(pdt => pdt.category?.name === category.name).map((product) => {
+                                            { console.log(product) }
+                                            return (
+                                                <div key={product._id} className="h-[320px] w-[320px] flex flex-col items-center justify-center rounded-2xl pb-3 bg-gray-100">
+                                                    <div className="p-8 pt-3 pl-12 h-[320px] w-[320px] object-contain">
+                                                        <img className="h-[220px] w-[220px] object-contain rounded-2xl mix-blend-multiply" src={product.images[0]} alt="product-image" />
+                                                    </div>
+                                                    <div onClick={() => router.push(`/products/${product._id}`)} className="mt-[-80px] font-bold text-xl text-blue-800 cursor-pointer">
+                                                        {product.title}
+                                                    </div>
+                                                    <div className="flex justify-between items-center gap-14 mt-1">
+                                                        <span className="font-extrabold text-xl">
+                                                            ₹{product.price}
+                                                        </span>
+                                                        <button onClick={() => addToCart(product._id, product.title)} className="w-[9rem] bg-blue-950 text-white rounded-xl flex p-2 font-bold gap-3 hover:text-blue-950 hover:border-blue-900 hover:bg-white">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                                                <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                                                            </svg>
+                                                            Add to Cart
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            )
+                                        })
+                                        }
+                                    </div>
+                                </div>
+                            )
+                        })}
+                    </div >
+                </Center >
                 <Footer />
-            </div>
+            </div >
         </>)
 }
 
@@ -173,10 +132,13 @@ export async function getServerSideProps() {
 
     await mongooseConnect();
 
-    const allProducts = await Product.find({});
+
+    const allCategories = await Category.find({});
+    const allProducts = await Product.find({}).populate('category');
     return {
         props: {
 
+            allCategories: JSON.parse(JSON.stringify(allCategories)),
             allProducts: JSON.parse(JSON.stringify(allProducts)),
         }
     }

@@ -61,6 +61,7 @@ border-radius: 4px;
 box-shadow: 0px 10px 10px gray;
 transition: all;
 transition-duration: 200ms;
+mix-blend-mode: multiply;
 :hover{
     transform: translateY(-4px);
     transform: scale(1.1);
@@ -95,7 +96,7 @@ export default function Featured({ product }) {
                                 <div>
 
                                     <Title>{product.title}</Title>
-                                    <Desc>{product.description}</Desc>
+                                    <Desc>{product.description.substring(0, 300)}...</Desc>
                                     <ButtonWrapper>
                                         <ButtonLink white outlined href={'/product/' + product._id}>
                                             Read More</ButtonLink>
@@ -112,7 +113,7 @@ export default function Featured({ product }) {
                             </Column>
                             <Column>
 
-                                <StyledImage src="https://res.cloudinary.com/dt21djrjq/image/upload/v1683804256/mah5bgotqqq4szpxhos6.jpg" alt="featured image" />
+                                <StyledImage src="https://res.cloudinary.com/dt21djrjq/image/upload/v1691917562/yymttc4usxa1foowi9jq.jpg" alt="featured image" />
 
 
                             </Column>
