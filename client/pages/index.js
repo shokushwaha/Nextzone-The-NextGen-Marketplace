@@ -12,6 +12,8 @@ import Footer from '@/components/Footer';
 import { Toaster, toast } from 'react-hot-toast';
 import CustomizationButton from '@/components/CustomizationButton';
 import Marquee from '@/components/Marquee';
+import { ProductHistory } from '@/models/ProductHistory';
+import Recommendation from '@/components/RecommendedProducts';
 export default function Home({ featuredProduct, newProducts }) {
   const { loggedIn, setLoggedInUser, ConnectToWallet, connectWallet, currentAccount
   } = useContext(CartContext);
@@ -59,6 +61,7 @@ export default function Home({ featuredProduct, newProducts }) {
           <Marquee />
           <Navbar />
           <Featured product={featuredProduct} />
+          <Recommendation prodNum={5} />
           <NewProducts products={newProducts} />
           <Footer />
         </div>
@@ -77,6 +80,7 @@ export async function getServerSideProps() {
   await mongooseConnect();
   const featuredProduct = await Product.findById(featuredProductId);
   const newProducts = await Product.find({}, null, { sort: { '_id': -1 }, limit: 20 });
+
   return {
     props: {
       featuredProduct: JSON.parse(JSON.stringify(featuredProduct)),

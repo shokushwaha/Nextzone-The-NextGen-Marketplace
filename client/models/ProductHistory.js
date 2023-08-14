@@ -1,6 +1,6 @@
 const { model, models, Schema } = require("mongoose");
 const ProductHistorySchema = new Schema({
-    userId: { type: Schema.Types.ObjectId, ref: 'Customer' },
+    userId: { type: Schema.Types.ObjectId },
     history: [{ type: Schema.Types.ObjectId, ref: 'Product' }],
 
 
