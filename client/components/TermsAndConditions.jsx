@@ -39,7 +39,7 @@ const TermsAndConditions = ({ setShowTermsAndConditions }) => {
                     </div>
 
 
-                    <div className='flex flex-col gap-2 pl-4'>
+                    <div className='flex flex-col gap-2 pl-4 pr-4'>
                         <div className='flex flex-col items-start justify-start   py-2 '>
                             <span className='flex items-center gap-2 justify-center'>
                                 <span className='text-2xl mb-2 pl-1 pr-2 font-extrabold text-gray-600 border-l-[4px]  py-2 border-yellow-500 '>
@@ -49,11 +49,29 @@ const TermsAndConditions = ({ setShowTermsAndConditions }) => {
                                 </span>
                             </span>
 
-                            <ul className='pl-6 text-gray-500 '>
+                            <ul className='pl-6 text-gray-500  '>
                                 <li className='flex items-center gap-4 '>
                                     <InfoIcon />
                                     <span >
-                                        <span className='text-gray-800 mr-1'>
+                                        <span className='text-gray-800 mr-1 font-bold'>
+                                            User
+                                        </span>
+                                        will be able to see
+                                        <span className='mx-1 text-gray-800 font-extrabold'>
+                                            Reciept
+                                        </span>
+                                        of every token issued on Etherscan (ie can see the
+                                        <span className='mx-1 text-gray-800 font-extrabold'>
+                                            proof
+                                        </span>
+                                        of every token minted on the blockchain network)
+
+                                    </span>
+                                </li>
+                                <li className='flex items-center gap-4 '>
+                                    <InfoIcon />
+                                    <span >
+                                        <span className='text-gray-800 mr-1 font-bold'>
                                             Issuing Policy:
                                         </span>
                                         On every purchase, a
@@ -68,16 +86,104 @@ const TermsAndConditions = ({ setShowTermsAndConditions }) => {
 
                                     </span>
                                 </li>
-                                <li className='flex items-center gap-4'>
+                                <li className='flex items-center gap-4 ml-4'>
                                     <InfoIcon />
-                                    <span>
-                                        "User," "you," and "your" refer to any person accessing or using the website.
+                                    <span >
+                                        <span className='text-gray-800 mr-1 font-bold'>
+                                            Premium Token
+                                        </span>
+                                        will be credited on a purchase
+                                        <span className='mx-1 text-gray-800'>
+                                            greater than
+                                        </span>
+                                        <span className='mx-1 text-gray-800 font-extrabold'>
+                                            ₹ 25000
+                                        </span>
+
+
                                     </span>
                                 </li>
-                                <li className='flex items-center gap-4'>
+                                <li className='flex items-center gap-4 ml-4'>
                                     <InfoIcon />
-                                    <span>
-                                        "Products" refers to the items available for sale on our website.
+                                    <span >
+                                        <span className='text-gray-800 mr-1 font-bold'>
+                                            Gold Token
+                                        </span>
+                                        will be credited on a purchase
+                                        <span className='mx-1 text-gray-800'>
+                                            ranges between
+                                        </span>
+                                        <span className='mx-1 text-gray-800 font-extrabold'>
+                                            ₹ 10000 & ₹ 25000
+                                        </span>
+
+
+                                    </span>
+                                </li>
+                                <li className='flex items-center gap-4 ml-4 '>
+                                    <InfoIcon />
+                                    <span >
+                                        <span className='text-gray-800 mr-1 font-bold'>
+                                            Silver Token
+                                        </span>
+                                        will be credited on a purchase
+                                        <span className='mx-1 text-gray-800'>
+                                            ranges between
+                                        </span>
+                                        <span className='mx-1 text-gray-800 font-extrabold'>
+                                            ₹ 1000 & ₹ 10000
+                                        </span>
+                                    </span>
+                                </li>
+                                <li className='flex items-center gap-4 ml-4 '>
+                                    <InfoIcon />
+                                    <span >
+                                        <span className='text-gray-800 mr-1 font-bold'>
+                                            Bronze Token
+                                        </span>
+                                        will be credited on a purchase
+                                        <span className='mx-1 text-gray-800'>
+                                            lesser than
+                                        </span>
+                                        <span className='mx-1 text-gray-800 font-extrabold'>
+                                            ₹ 1000
+                                        </span>
+
+
+                                    </span>
+                                </li>
+                                <li className='flex items-center gap-4 '>
+                                    <InfoIcon />
+                                    <span >
+                                        <span className='text-gray-800 mr-1 font-bold mt-1'>
+                                            Expiring Policy:
+                                        </span>
+                                        Every token credited
+                                        <span className='mx-1 text-gray-800 font-extrabold'>
+                                            will expire after a certain amount of time
+
+                                        </span>
+                                        which is specified on every token as
+                                        <span className='mx-1 text-gray-800 font-extrabold'>
+                                            Expiry Date
+                                        </span>
+
+                                    </span>
+                                </li>
+                                <li className='flex items-center gap-4 '>
+                                    <InfoIcon />
+                                    <span >
+                                        <span className='text-gray-800 mr-1 font-bold mt-1'>
+                                            Redeem Policy:
+                                        </span>
+                                        At the time of checkout from cart
+                                        <span className='mx-1 text-gray-800 font-extrabold'>
+                                            every user will get a option of selecting token
+                                        </span>
+                                        (*if they have)
+                                        from a dropdown which will reduce the total amount by the value of token
+
+
                                     </span>
                                 </li>
                             </ul>
