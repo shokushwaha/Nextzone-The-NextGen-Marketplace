@@ -231,7 +231,7 @@ export default function CartPage() {
         await axios.post('/api/order', { id, cartProducts });
 
         if (finalPrice !== 0) {
-            const response = await axios.post('/api/ checkoutpod', {
+            const response = await axios.post('/api/checkoutpod', {
                 name, email, city, postalCode, streetAddress, country,
                 cartProducts, finalPrice
             });
@@ -249,7 +249,7 @@ export default function CartPage() {
             );
         }
         else {
-            const response = await axios.post('/api/ checkoutpod', {
+            const response = await axios.post('/api/checkoutpod', {
                 name, email, city, postalCode, streetAddress, country,
                 cartProducts, dp
             });

@@ -488,7 +488,6 @@ export function CartContextProvider({ children }) {
         }
         if (ls) {
             const str = JSON.parse(ls.getItem('loggedIn'))
-            console.log(str)
             if (str === 'true')
                 setLoggedIn(true);
         }
