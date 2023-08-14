@@ -54,11 +54,24 @@ export default function ProductPage({ product }) {
 
     const router = useRouter();
 
-    const { addProduct } = useContext(CartContext);
+    const { addProduct, loggedInUser } = useContext(CartContext);
     const addToCart = (id) => {
         addProduct(id);
     }
 
+    async function pushHistory(prodId, userId) {
+        const res = await axios.post('/api/sendhistory', { prodId, userId });
+        console.log(res);
+    }
+
+    useEffect(() => {
+
+        const prodId = router.query.id[0];
+        const userId = loggedInUser.data._id;
+
+
+        pushHistory(prodId, userId);
+    }, [])
 
     const [review, setReview] = useState('');
     const addReview = async () => {
