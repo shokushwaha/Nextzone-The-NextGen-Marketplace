@@ -18,10 +18,6 @@ export default async function handler(req, res) {
             const temp = await Product.findOne({ _id: products.history[i] })
             arr.push(temp)
         }
-        console.log(arr)
-
-
-
 
         res.json(arr);
     }
