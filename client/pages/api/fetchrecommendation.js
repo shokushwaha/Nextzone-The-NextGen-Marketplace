@@ -14,7 +14,7 @@ export default async function handler(req, res) {
 
         let arr = []
         console.log(products)
-        for (let i = 0; i < products.history.length; i++) {
+        for (let i = 0; i < products?.history?.length; i++) {
             const temp = await Product.findOne({ _id: products.history[i] })
             arr.push(temp)
         }
