@@ -49,44 +49,49 @@ const TermsAndConditions = ({ setShowTermsAndConditions }) => {
                                 </span>
                             </span>
 
-                            <ul className='pl-6 text-gray-500  '>
+
+
+
+
+                            <ul className='pl-6 text-gray-500 flex flex-col gap-2 '>
                                 <li className='flex items-center gap-4 '>
                                     <InfoIcon />
                                     <span >
                                         <span className='text-gray-800 mr-1 font-bold'>
-                                            User
-                                        </span>
-                                        will be able to see
-                                        <span className='mx-1 text-gray-800 font-extrabold'>
-                                            Reciept
-                                        </span>
-                                        of every token issued on Etherscan (ie can see the
-                                        <span className='mx-1 text-gray-800 font-extrabold'>
-                                            proof
-                                        </span>
-                                        of every token minted on the blockchain network)
+                                            Users
+                                        </span> will have the capability to
+                                        <span className='text-gray-800 mx-1 font-bold'>
 
+                                            access receipts
+                                        </span>
+                                        for all issued tokens on Etherscan, showcasing transparent evidence of each token minted on the blockchain.
+                                        <span className='text-gray-800 mr-1 font-bold'>
+
+                                            This fosters trust by enabling users to verify their token ownership
+                                        </span>
+                                        , enhancing their confidence in the platform's credibility and the validity of transactions.
                                     </span>
                                 </li>
+
                                 <li className='flex items-center gap-4 '>
                                     <InfoIcon />
                                     <span >
                                         <span className='text-gray-800 mr-1 font-bold'>
                                             Issuing Policy:
                                         </span>
-                                        On every purchase, a
+                                        Upon each purchase,
                                         <span className='mx-1 text-gray-800 font-extrabold'>
                                             Fungible Token
                                         </span>
-                                        will be issued worth of
+                                        will be provided ,
                                         <span className='mx-1 text-gray-800 font-bold'>
-                                            10%
+                                            worth of 10% of the total expenditure.
                                         </span>
-                                        of Total Amount Spent and will be credited to your MetaMask Account
+                                        These tokens will be deposited into your MetaMask Account.
 
                                     </span>
                                 </li>
-                                <li className='flex items-center gap-4 ml-4'>
+                                <li className='flex items-center gap-4 ml-8 my-[-4px]'>
                                     <InfoIcon />
                                     <span >
                                         <span className='text-gray-800 mr-1 font-bold'>
@@ -103,7 +108,7 @@ const TermsAndConditions = ({ setShowTermsAndConditions }) => {
 
                                     </span>
                                 </li>
-                                <li className='flex items-center gap-4 ml-4'>
+                                <li className='flex items-center gap-4 ml-8 my-[-4px]'>
                                     <InfoIcon />
                                     <span >
                                         <span className='text-gray-800 mr-1 font-bold'>
@@ -120,7 +125,7 @@ const TermsAndConditions = ({ setShowTermsAndConditions }) => {
 
                                     </span>
                                 </li>
-                                <li className='flex items-center gap-4 ml-4 '>
+                                <li className='flex items-center gap-4 ml-8 my-[-4px] '>
                                     <InfoIcon />
                                     <span >
                                         <span className='text-gray-800 mr-1 font-bold'>
@@ -135,7 +140,7 @@ const TermsAndConditions = ({ setShowTermsAndConditions }) => {
                                         </span>
                                     </span>
                                 </li>
-                                <li className='flex items-center gap-4 ml-4 '>
+                                <li className='flex items-center gap-4 ml-8 my-[-4px]'>
                                     <InfoIcon />
                                     <span >
                                         <span className='text-gray-800 mr-1 font-bold'>
@@ -152,40 +157,83 @@ const TermsAndConditions = ({ setShowTermsAndConditions }) => {
 
                                     </span>
                                 </li>
-                                <li className='flex items-center gap-4 '>
+
+
+
+
+
+
+
+                                <li className='flex items-center gap-4 mt-[4px] '>
                                     <InfoIcon />
                                     <span >
                                         <span className='text-gray-800 mr-1 font-bold mt-1'>
                                             Expiring Policy:
                                         </span>
-                                        Every token credited
+                                        Tokens credited to your account will have an
                                         <span className='mx-1 text-gray-800 font-extrabold'>
-                                            will expire after a certain amount of time
+                                            expiration date
 
                                         </span>
-                                        which is specified on every token as
+                                        , clearly stated as
                                         <span className='mx-1 text-gray-800 font-extrabold'>
-                                            Expiry Date
+                                            "Expiry Date."
                                         </span>
-
+                                        Once this date is reached, the token will no longer be valid or usable.
                                     </span>
                                 </li>
-                                <li className='flex items-center gap-4 '>
+
+
+                                <li className='flex items-center gap-4 mt-[4px] '>
                                     <InfoIcon />
                                     <span >
                                         <span className='text-gray-800 mr-1 font-bold mt-1'>
                                             Redeem Policy:
                                         </span>
-                                        At the time of checkout from cart
+                                        During the checkout process, users will be presented with a dropdown option to select
                                         <span className='mx-1 text-gray-800 font-extrabold'>
-                                            every user will get a option of selecting token
-                                        </span>
-                                        (*if they have)
-                                        from a dropdown which will reduce the total amount by the value of token
+                                            available tokens.
 
+                                        </span>
+                                        If owned, the chosen token's value will be  deducted from the total amount,
+                                        <span className='mx-1 text-gray-800 font-extrabold'>
+                                            facilitating cost reduction and the token will expire.
+                                        </span>
+                                        The redemmed token will no longer be valid or usable.
+                                    </span>
+                                </li>
+
+
+                                <li className='flex items-center gap-4 mt-[4px] '>
+                                    <InfoIcon />
+                                    <span >
+                                        <span className='text-gray-800 mr-1 font-bold mt-1'>
+                                            Transfer Policy:
+                                        </span>
+                                        Any token credited to your account is
+                                        <span className='mx-1 text-gray-800 font-extrabold'>
+                                            not be transferrable
+
+                                        </span>
+                                        (ie You cannot transfer the token to any other user)
 
                                     </span>
                                 </li>
+
+                                <li className='flex items-center gap-4 mt-[4px] '>
+                                    <InfoIcon />
+                                    <span >
+                                        <span className='text-gray-800 mr-1 font-bold mt-1'>
+                                            Ownership:
+                                        </span>
+                                        All tokens remain the .
+                                        <span className='mx-1 text-gray-800 font-extrabold'>
+                                            sole property of NextZone .
+                                        </span>
+                                        Any unauthorized or illegal use of tokens will not be the responsibility of NextZone.
+                                    </span>
+                                </li>
+
                             </ul>
                         </div>
 
@@ -478,8 +526,6 @@ const TermsAndConditions = ({ setShowTermsAndConditions }) => {
                                 </li>
                             </ul>
                         </div>
-                        <div className='h-[345px]'></div>
-
                     </div>
                 </div>
             </motion.div>
