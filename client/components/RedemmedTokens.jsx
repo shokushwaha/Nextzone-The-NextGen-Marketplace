@@ -3,7 +3,7 @@ import React from 'react'
 const RedemmedTokens = ({ name, symbol, price, usedOn }) => {
     return (
         <>
-            <div className='flex flex-col shadow-xl p-2  rounded-md m-4 items-center bg-slate-100 hover:scale-105 transition delay-150 duration-300 ease-in-out opacity-50 w-[10vw] '>
+            <div className='flex flex-col shadow-xl p-2  rounded-md m-4 items-center bg-slate-100 hover:scale-105 transition delay-150 duration-300 ease-in-out  w-[10vw] z-[-1] opacity-50 '>
                 <div className=' w-32 rounded-md   '>
                     <img src={
                         price * 10 > 0 && price * 10 < 1000

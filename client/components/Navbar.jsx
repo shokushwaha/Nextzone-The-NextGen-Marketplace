@@ -7,12 +7,18 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 function Nav() {
     const [isOpen, setIsOpen] = useState(false);
-    const { cartProducts, currentAccount } = useContext(CartContext);
+    const { cartProducts, currentAccount, showNavBar } = useContext(CartContext);
     const inActiveLink = ' hover:bg-gray-800 text-white px-3 py-2 rounded-md text-sm font-medium flex flex-col items-center ';
     const activeLink = ' hover:bg-gray-800 text-white px-3 py-1 flex flex-col items-center font-bold border-b-2 border-gray-200';
     const router = useRouter();
+    if (!showNavBar)
+        return <>
+            <div className="bg-neutral-800 w-[100vw] h-16">
+
+            </div>
+        </>
     return (
-        <div className="bg-neutral-800 flex items-center justify-center p-2 mt-[-10px] pt-4" >
+        <div className="bg-neutral-800 flex items-center justify-center p-2 mt-[-10px] pt-4 " >
 
             {/* <Center> */}
             <motion.div

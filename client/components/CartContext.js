@@ -478,7 +478,7 @@ export function CartContextProvider({ children }) {
     const [loggedIn, setLoggedIn] = useState(false);
     const [loggedInUser, setLoggedInUser] = useState({});
     const ls = typeof window !== 'undefined' ? window.localStorage : null;
-
+    const [showNavBar, setShowNavBar] = useState(true);
     const [cartProducts, setCartProducts] = useState([]);
 
 
@@ -619,7 +619,7 @@ export function CartContextProvider({ children }) {
 
 
     return (
-        <CartContext.Provider value={{ loggedIn, setLoggedIn, loggedInUser, setLoggedInUser, cartProducts, setCartProducts, addProduct, removeProduct, clearCart, ConnectToWallet, connectWallet, currentAccount }}>
+        <CartContext.Provider value={{ loggedIn, setLoggedIn, loggedInUser, setLoggedInUser, cartProducts, setCartProducts, addProduct, removeProduct, clearCart, ConnectToWallet, connectWallet, currentAccount, showNavBar, setShowNavBar }}>
             {children}
         </CartContext.Provider>
     );

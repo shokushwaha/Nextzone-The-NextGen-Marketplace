@@ -1,23 +1,3 @@
-// import React from 'react'
-// import { motion } from 'framer-motion'
-// export default function Footer() {
-//     return (
-//         <>
-
-//             <motion.div className='bg-neutral-800 text-white p-1 flex  items-center justify-center mt-20 '
-
-//                 initial={{ opacity: 0, scale: 0.5 }}
-//                 animate={{ opacity: 1, scale: 1 }}
-//                 exit={{ opacity: 0 }}
-//                 transition={{ duration: 1, delay: 0.5 }}>
-//                 &copy; Hack Wizards - Flipkart Grid 5.0 || 2023
-//             </motion.div>
-//         </>
-
-//     )
-// }
-
-
 import React from 'react'
 import { Box, Button, Stack, TextField, Typography } from '@mui/material'
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
@@ -60,7 +40,7 @@ const Footer = () => {
                     <Typography>Performance</Typography>
                     <Typography>Details</Typography>
                 </Stack>
-                <Stack direction={'column'} pl={'9%'}>
+                <Stack direction={'column'} pl={'9%'} className='z-[-1]'>
                     <Typography fontWeight={'700'}>SIGN UP</Typography>
                     <Typography pb='3%'>You may unsubscribe at any moment. For that purpose, please find our <br />
                         contact info in the legal notice.</Typography>

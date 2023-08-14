@@ -24,7 +24,7 @@ const ExpiredToken = ({ name, symbol, price, issued, hash }) => {
 
     return (
         <>
-            <div className='flex flex-col shadow-xl p-2  rounded-md m-4 items-center bg-slate-100  hover:scale-105 transition delay-150 duration-300 ease-in-out opacity-60 w-[12vw]'>
+            <div className='flex flex-col shadow-xl p-2  rounded-md m-4 items-center bg-slate-100  hover:scale-105 transition delay-150 duration-300 ease-in-out  w-[12vw] z-[-1] opacity-50'>
                 <div className=' w-36 rounded-md   '>
                     <img src={
                         price * 10 > 0 && price * 10 < 1000

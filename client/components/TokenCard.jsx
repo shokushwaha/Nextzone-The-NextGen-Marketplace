@@ -47,7 +47,7 @@ const TokenCard = ({ name, symbol, price, issued, hash }) => {
     return (
         <>
 
-            <div className='flex flex-col shadow-xl p-2  rounded-md m-4 items-center bg-slate-100 w-[13vw] hover:scale-105 transition delay-150 duration-300 ease-in-out '>
+            <div className='flex flex-col shadow-xl p-2  rounded-md m-4 items-center bg-slate-100 w-[13vw] hover:scale-105 transition delay-150 duration-300 ease-in-out z-[-1]'>
                 <div className=' w-44 rounded-md   '>
                     <img src={
                         price * 10 > 0 && price * 10 < 1000

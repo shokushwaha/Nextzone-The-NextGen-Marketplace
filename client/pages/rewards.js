@@ -15,10 +15,11 @@ import ExpiredToken from '@/components/ExpiredToken';
 import TermsAndConditions from '@/components/TermsAndConditions';
 
 const Rewards = () => {
-    const { currentAccount } = useContext(CartContext);
+    const { currentAccount, setShowNavBar } = useContext(CartContext);
     const [tokens, setTokens] = useState([]);
     const [expiredTokens, setExpiredTokens] = useState([]);
     const [redemmedTokens, setRedemmedTokens] = useState([]);
+    const [showTermsAndConditions, setShowTermsAndConditions] = useState(false);
 
 
     async function fetchDetails() {
@@ -43,6 +44,8 @@ const Rewards = () => {
         setTokens(tokData)
         setExpiredTokens(expTokData)
         setRedemmedTokens(redemeedTokens.data)
+
+        const noScroll = showTermsAndConditions ? "overflow-hidden" : "overflow-scroll";
     }
     useEffect(() => {
         fetchDetails();
@@ -54,10 +57,8 @@ const Rewards = () => {
                 <title>NextZone - Rewards</title>
 
             </Head>
+            {showTermsAndConditions && <TermsAndConditions setShowTermsAndConditions={setShowTermsAndConditions} />}
             <Nav />
-
-            <TermsAndConditions />
-
             <div className='flex items-center justify-end  py-2 pr-2 bg-neutral-800'>
                 <span className='mr-2'>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="gray" className="w-6 h-6">
@@ -74,6 +75,34 @@ const Rewards = () => {
                     {currentAccount}
                 </span>
             </div>
+            {!showTermsAndConditions &&
+                <div className='absolute right-2 top-[18vh] bg-white px-4 py-1 rounded-md shadow-xl'>
+                    <div className='flex items-center gap-2'>
+                        <button onClick={() => {
+                            setShowTermsAndConditions(true)
+                            setShowNavBar(false)
+                        }} className='flex items-center gap-2'>
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="black" className="w-6 h-6">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+                                </svg>
+
+                            </span>
+                            <span className='text-black'>
+                                Terms and Conditions
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            }
+
+
+
+
+
+
+
+
 
             <div className='flex items-center justify-center text-4xl py-2 mt-2 text-neutral-800 font-extrabold'>
 
@@ -82,11 +111,11 @@ const Rewards = () => {
 
             {/* <Center> */}
             {tokens.length === 0 && <span className='flex flex-col'>
-                <span className='text-gray-800 font-bold'>
+                <span className='text-gray-800 font-bold flex items-center justify-center'>
 
                     You don't have any tokens!!
                 </span>
-                <button className='bg-neutral-800 text-gray-200 w-48 px-4 py-1 rounded-lg shadow-2xl mt-4 mx-auto'>Continue shopping...</button>
+                <button className='bg-neutral-800 text-gray-200 w-48 px-4 py-1 rounded-lg shadow-2xl mt-4 mx-auto mb-8'>Continue shopping...</button>
             </span>
             }
             <div className='flex  w-[80vw] mx-auto justify-center items-center flex-wrap'>
