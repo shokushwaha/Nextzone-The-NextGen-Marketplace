@@ -14,6 +14,41 @@ import Head from "next/head";
 import { Toaster, toast } from "react-hot-toast";
 import ReactStars from "react-rating-stars-component";
 import { useRouter } from "next/router";
+import { ProductHistory } from "@/models/ProductHistory";
+import Recommendation from "@/components/RecommendedProducts";
+import ProductBox from "@/components/ProductBox";
+
+const ProductsGrid = styled.div`
+display: grid;
+grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+gap: 8px;
+padding-top: 10px;
+margin-left:-50px;
+justify-content: space-between;
+
+
+@media screen and (max-width: 700px) {
+    display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+   
+  }
+
+  @media screen and (max-width: 550px) {
+    display: grid;
+grid-template-columns: 1fr 1fr;
+   
+  }
+
+  
+  @media screen and (max-width: 400px) {
+    display: grid;
+grid-template-columns: 1fr;
+   
+  }
+
+
+`;
+
 const Title = styled.div`
 font-size:2rem;
 `;
@@ -88,7 +123,20 @@ export default function ProductPage({ product }) {
     }
     avgRatings = avgRatings / tempRat.length;
 
+    const userId = loggedInUser.data._id;
 
+    const [recommendedProducts, setRecommendedProducts] = useState([]);
+
+    const fetchProducts = async () => {
+        const res = await axios.post("/api/fetchrecommendation", { userId });
+        let arr = res.data
+        arr = arr.reverse()
+        arr=arr.slice(0,4)
+        setRecommendedProducts(arr);
+    }
+    useEffect(() => {
+        fetchProducts();
+    }, [])
 
     return (
         <>
@@ -100,7 +148,7 @@ export default function ProductPage({ product }) {
                 position="top-right"
                 reverseOrder={false}
             />
-            <div className="overflow-y-hidden h-[100vh]">
+            <div className="overflow-hidden h-[100vh]">
                 <Nav />
                 {/* <Center> */}
                 <Wrapper>
@@ -133,51 +181,52 @@ export default function ProductPage({ product }) {
                                 </div>
 
                                 <div className="flex flex-col mt-1" >
-                                <div className="flex p-2 items-center " >
-                                    <input type="text" value={review} onChange={e => setReview(e.target.value)} placeholder="Add review" className="px-4 py-1 rounded-l-md shadow border-2 border-neutral-300 w-[300px]" required />
-                                    <button onClick={addReview} className="border-2 border-sky-300 bg-sky-200 hover:bg-sky-400 px-4 py-1 rounded-r-md shadow w-[120px]">Add</button>
+                                    <div className="flex p-2 items-center " >
+                                        <input type="text" value={review} onChange={e => setReview(e.target.value)} placeholder="Add review" className="px-4 py-1 rounded-l-md shadow border-2 border-neutral-300 w-[300px]" required />
+                                        <button onClick={addReview} className="border-2 border-sky-300 bg-sky-200 hover:bg-sky-400 px-4 py-1 rounded-r-md shadow w-[120px]">Add</button>
+                                    </div>
+
+                                    {reviewArr.length === 0 ? <h1></h1>
+
+                                        : <>
+
+                                            <div>
+                                                {reviewArr.length > 0 && reviewArr.map(r => (<>
+
+                                                    <h1 className="flex gap-4 pb-1 items-center  border-b-2 border-green-400 mt-1" >
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                                            <path strokeLinecap="round" strokeLinejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />
+                                                        </svg>
+
+                                                        {r}</h1>
+                                                </>))}
+                                            </div>
+                                        </>}
                                 </div>
-
-                                {reviewArr.length === 0 ? <h1></h1>
-
-                                    : <>
-
-                                        <div>
-                                            {reviewArr.length > 0 && reviewArr.map(r => (<>
-
-                                                <h1 className="flex gap-4 pb-1 items-center  border-b-2 border-green-400 mt-1" >
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />
-                                                    </svg>
-
-                                                    {r}</h1>
-                                            </>))}
-                                        </div>
-                                    </>}
-                            </div>
 
                             </div>
                         </motion.div>
                     </WhiteBox>
-                    <div >
+
+                    <div className="h-[80vh] p-6" >
                         <motion.div
-                            className="container text-center"
+                            className="text-center"
                             initial={{ opacity: 0, x: "2000px" }}
                             animate={{ opacity: 1, x: "0px" }}
                             exit={{ opacity: 0, x: "2000px" }}
                             transition={{ duration: 1 }}
                         >
 
-                            <Title>
+                            <Title className="font-extrabold text-neutral-700">
                                 {product.title}
                             </Title>
-                            <p>
-                                {product.description}
+                            <p className="p-3 text-gray-700">
+                                {product.description.substr(0,900)}...more
                             </p>
-                            <StyledBox className="flex  items-center justify-between">
+                            <StyledBox className="flex items-center justify-between pr-6">
 
-                                <div className="mt-10 text-4xl">
-                                    ${product.price}
+                                <div className="text-4xl">
+                                ₹{product.price}
                                     <div className="bg-yellow-300 rounded-md text-sm mt-2 px-2 py-1">
                                         {product.discount}% off
                                     </div>
@@ -198,6 +247,15 @@ export default function ProductPage({ product }) {
 
                                 </div>
                             </StyledBox>
+
+                            <ProductsGrid>
+                        {recommendedProducts.length > 0 && recommendedProducts.map(product => (
+                            <div key={product._id}>
+                                <ProductBox {...product} />
+                            </div>
+                        ))}
+                    </ProductsGrid>
+
 
                         </motion.div>
                     </div>

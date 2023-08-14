@@ -4,6 +4,7 @@ import ProductBox from "./ProductBox";
 import Center from "./Center";
 import { motion } from "framer-motion";
 import styled from "styled-components";
+
 const ProductsGrid = styled.div`
 display: grid;
 grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -47,6 +48,7 @@ justify-content: center;
 padding-bottom: 4px;
 margin: auto 0;
 `;
+
 import axios from 'axios';
 const Recommendation = ({ prodNum }) => {
     const { loggedInUser } = useContext(CartContext);
@@ -58,6 +60,7 @@ const Recommendation = ({ prodNum }) => {
         const res = await axios.post("/api/fetchrecommendation", { userId });
         let arr = res.data
         arr = arr.reverse()
+        arr=arr.slice(0,prodNum)
         setRecommendedProducts(arr);
     }
     useEffect(() => {
