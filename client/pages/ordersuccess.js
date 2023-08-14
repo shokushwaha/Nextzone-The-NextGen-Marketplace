@@ -611,12 +611,15 @@ export default function Ordersuccess() {
                     />
                     : null}
             {
-                (clicked && !minting && modalOpen) ? <div className='flex flex-col items-center justify-center gap-4 h-[80vh]'>
+                (clicked && !minting && modalOpen) ? <div className='flex flex-col items-center justify-center gap-4 h-[80vh] '>
 
-                    <ScratchCard {...settings}>
-                        <TokenModal ftName={ftName} ftSymbol={ftSymbol} ftAmnt={ftAmnt} transactionHash={transactionHash} />
-                        <button onClick={() => setModalOpen(false)} className=' absolute left-[160px] bg-yellow-400 px-8 py-1 mt-1 rounded-md shadow-xl hover:bg-yellow-500'>Ok</button>
-                    </ScratchCard>
+                    <div>
+
+                        <ScratchCard {...settings}>
+                            <TokenModal ftName={ftName} ftSymbol={ftSymbol} ftAmnt={ftAmnt} transactionHash={transactionHash} />
+                            <button onClick={() => setModalOpen(false)} className=' absolute left-[160px] bg-yellow-400 px-8 py-1 mt-1 rounded-md shadow-xl hover:bg-yellow-500'>Ok</button>
+                        </ScratchCard>
+                    </div>
 
                 </div> : null
             }
