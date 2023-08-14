@@ -96,7 +96,7 @@ export default function ProductBox({ _id, title, description, images, price, dis
         <>
             <Tilt>
 
-                <ProductWrapper>
+                <ProductWrapper className="hover:shadow-2xl p-2">
 
                     <WhiteBox href={url}>
                         <StyledImage src={images[0]} alt="image" />
