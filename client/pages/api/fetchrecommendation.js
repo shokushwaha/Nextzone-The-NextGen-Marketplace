@@ -13,7 +13,6 @@ export default async function handler(req, res) {
         const products = await ProductHistory.findOne({ userId: userId });
 
         let arr = []
-        console.log(products)
         for (let i = 0; i < products?.history?.length; i++) {
             const temp = await Product.findOne({ _id: products.history[i] })
             arr.push(temp)

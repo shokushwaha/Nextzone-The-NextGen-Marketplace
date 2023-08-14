@@ -10,7 +10,7 @@ import { useContext } from 'react';
 export default async function handler(req, res) {
     await mongooseConnect();
     const { method } = req;
-    // const {loggedInUser}=useContext(CartContext);
+
 
     if (method === "POST") {
 

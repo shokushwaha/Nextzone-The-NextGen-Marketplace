@@ -227,7 +227,15 @@ export default function CartPage() {
             alert("Fill all the details");
             return;
         }
+
+        await axios.post('/api/order', { id, cartProducts });
+
         if (finalPrice !== 0) {
+            const response = await axios.post('/api/ checkoutpod', {
+                name, email, city, postalCode, streetAddress, country,
+                cartProducts, finalPrice
+            });
+            console.log(response)
             router.push(
                 {
                     pathname:
@@ -241,6 +249,11 @@ export default function CartPage() {
             );
         }
         else {
+            const response = await axios.post('/api/ checkoutpod', {
+                name, email, city, postalCode, streetAddress, country,
+                cartProducts, dp
+            });
+            console.log(response)
             let temp = 0
             router.push(
                 {
