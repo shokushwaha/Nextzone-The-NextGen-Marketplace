@@ -44,7 +44,7 @@ const TermsAndConditions = ({ setShowTermsAndConditions }) => {
                             <span className='flex items-center gap-2 justify-center'>
                                 <span className='text-2xl mb-2 pl-1 pr-2 font-extrabold text-gray-600 border-l-[4px]  py-2 border-yellow-500 '>
                                     <span className='pl-4'>
-                                        Token Issuing & Redemtion Policy
+                                        Token Issuing & Redemption Policy
                                     </span>
                                 </span>
                             </span>
@@ -53,14 +53,19 @@ const TermsAndConditions = ({ setShowTermsAndConditions }) => {
                                 <li className='flex items-center gap-4 '>
                                     <InfoIcon />
                                     <span >
-                                        Issuing Policy
-                                        <span className='text-xl font-extrabold mx-2 block ml-20 my-2'>
-                                            Worth Of Token Issued =
-                                            Total Price of Products Purchased * 0.1
-                                            <span className='text-sm font-normal ml-4'>
-                                                (i.e. 10% of Price purchased)
-                                            </span>
+                                        <span className='text-gray-800 mr-1'>
+                                            Issuing Policy:
                                         </span>
+                                        On every purchase, a
+                                        <span className='mx-1 text-gray-800 font-extrabold'>
+                                            Fungible Token
+                                        </span>
+                                        will be issued worth of
+                                        <span className='mx-1 text-gray-800 font-bold'>
+                                            10%
+                                        </span>
+                                        of Total Amount Spent and will be credited to your MetaMask Account
+
                                     </span>
                                 </li>
                                 <li className='flex items-center gap-4'>
