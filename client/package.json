@@ -33,6 +33,7 @@
     "react-confetti": "^6.1.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
+    "react-parallax-tilt": "^1.7.158",
     "react-rating-stars-component": "^2.2.0",
     "react-scratchcard": "^1.1.2",
     "react-tilt": "^1.0.2",

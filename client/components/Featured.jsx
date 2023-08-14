@@ -6,6 +6,7 @@ import CartIcon from "./icons/CartIcon";
 import { useContext, useEffect } from "react";
 import { CartContext } from "./CartContext";
 import { motion } from "framer-motion";
+import Tilt from 'react-parallax-tilt';
 
 const Bg = styled.div`
 color: #fff;
@@ -64,7 +65,7 @@ transition-duration: 200ms;
 mix-blend-mode: multiply;
 :hover{
     transform: translateY(-4px);
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 `;
 
@@ -93,7 +94,7 @@ export default function Featured({ product }) {
                     >
                         <Wrapper>
                             <Column>
-                                <div className="flex flex-col items-center justify-center pt-8">
+                                <div className="flex flex-col items-center justify-center pt-8 ">
 
                                     <Title>{product.title}</Title>
                                     <Desc>{product.description.substring(0, 500)}...</Desc>
@@ -112,8 +113,10 @@ export default function Featured({ product }) {
 
                             </Column>
                             <Column>
-
+                                <Tilt>
+                                    
                                 <StyledImage src="https://res.cloudinary.com/dt21djrjq/image/upload/v1691917562/yymttc4usxa1foowi9jq.jpg" alt="featured image" className="w-[300px]"/>
+                                </Tilt>
 
 
                             </Column>
