@@ -501,22 +501,22 @@ export default function Ordersuccess() {
             let couponSymbol = "";
             if (amount > 0 && amount < 1000) {
                 couponName = "Bronze Token"
-                couponSymbol = "Bronze"
+                couponSymbol = "Earned Via Purchase"
                 finalAmount = Math.floor(amount * 0.1)
             }
             else if (amount >= 1000 && amount < 10000) {
                 couponName = "Silver Token"
-                couponSymbol = "Silver"
+                couponSymbol = "Earned Via Purchase"
                 finalAmount = Math.floor(amount * 0.1)
             }
             else if (amount >= 10000 && amount < 25000) {
                 couponName = "Gold Token"
-                couponSymbol = "Gold"
+                couponSymbol = "Earned Via Purchase"
                 finalAmount = Math.floor(amount * 0.1)
             }
             else {
                 couponName = "Premium Token"
-                couponSymbol = "Premium"
+                couponSymbol = "Earned Via Purchase"
                 finalAmount = Math.floor(amount * 0.1)
             }
 
