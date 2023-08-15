@@ -228,6 +228,9 @@ export default function Account() {
                                 </span>
                             </div>
                             <div className="flex gap-2 items-center justify-center">
+                                <span className='text-gray-600 font-extrabold'>
+                                    Share and Earn
+                                </span>
                                 <TwitterShareButton url={`http://localhost:3000/register?account=${currentAccount}`}>
                                     <TwitterIcon size={32} round={true} />
                                 </TwitterShareButton>
