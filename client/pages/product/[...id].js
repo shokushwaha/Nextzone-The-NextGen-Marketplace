@@ -24,7 +24,6 @@ grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 gap: 8px;
 padding-top: 10px;
 margin-left:-50px;
-justify-content: space-between;
 
 
 @media screen and (max-width: 700px) {
@@ -131,7 +130,7 @@ export default function ProductPage({ product }) {
         const res = await axios.post("/api/fetchrecommendation", { userId });
         let arr = res.data
         arr = arr.reverse()
-        arr=arr.slice(0,4)
+        arr = arr.slice(0, 4)
         setRecommendedProducts(arr);
     }
     useEffect(() => {
@@ -208,7 +207,7 @@ export default function ProductPage({ product }) {
                         </motion.div>
                     </WhiteBox>
 
-                    <div className="h-[80vh] p-6" >
+                    <div className="h-[80vh] p-6 flex justify-between" >
                         <motion.div
                             className="text-center"
                             initial={{ opacity: 0, x: "2000px" }}
@@ -220,13 +219,13 @@ export default function ProductPage({ product }) {
                             <Title className="font-extrabold text-neutral-700">
                                 {product.title}
                             </Title>
-                            <p className="p-3 text-gray-700">
-                                {product.description.substr(0,900)}...more
+                            <p className="p-6 text-gray-700">
+                                {product.description.substr(0, 850)}...more
                             </p>
                             <StyledBox className="flex items-center justify-between pr-6">
 
                                 <div className="text-4xl">
-                                ₹{product.price}
+                                    ₹{product.price}
                                     <div className="bg-yellow-300 rounded-md text-sm mt-2 px-2 py-1">
                                         {product.discount}% off
                                     </div>
@@ -249,12 +248,12 @@ export default function ProductPage({ product }) {
                             </StyledBox>
 
                             <ProductsGrid>
-                        {recommendedProducts.length > 0 && recommendedProducts.map(product => (
-                            <div key={product._id}>
-                                <ProductBox {...product} />
-                            </div>
-                        ))}
-                    </ProductsGrid>
+                                {recommendedProducts.length > 0 && recommendedProducts.map(product => (
+                                    <div key={product._id}>
+                                        <ProductBox {...product} />
+                                    </div>
+                                ))}
+                            </ProductsGrid>
 
 
                         </motion.div>

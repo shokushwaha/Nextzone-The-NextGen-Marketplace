@@ -18,7 +18,7 @@ function Nav() {
             </div>
         </>
     return (
-        <div className="bg-neutral-800 flex items-center justify-center p-2 mt-[-10px] pt-4 " >
+        <div className="bg-neutral-800 flex items-center justify-center p-2 mt-[-10px] pt-4" >
 
             {/* <Center> */}
             <motion.div

@@ -13,34 +13,24 @@ import Footer from "@/components/Footer";
 import { Toaster, toast } from "react-hot-toast";
 import Confetti from 'react-confetti'
 import Nav from "@/components/Navbar";
+
 const ColumnsWrapper = styled.div`
 display: grid;
 grid-template-columns: 1.2fr 0.8fr;
 gap: 40px;
-margin-top: 40px;
-
-
-
-
-
-  @media screen and (max-width: 550px) {
-   
+@media screen and (max-width: 550px) {
 display  :flex ;
 flex-direction: column;
 justify-content: center;
-
 }
-
-  
-
-
-
 `;
 
 const Box = styled.div`
+width:70%;
 background-color: #fff;
 border: 10px;
 padding: 20px;
+padding-left:10px;
 min-height:90vh;
 overflow-x: hidden;
 `;
@@ -65,7 +55,7 @@ margin-top: 10px;
     transform: scale(1.1);
     svg{
         display: flex;
-      width: 100px;
+        width: 100px;
     }
     span{
         display: none;
@@ -87,7 +77,6 @@ tr{
     border-bottom: 2px solid #f0f0f0;
 }
 img{
-    width: 80px;
     border-radius: 10px;
     background-color: #f0f0f0;
     padding: 4px;
@@ -96,8 +85,9 @@ img{
 const ProductCell = styled.div`
 display: flex;
 flex-direction: column;
-padding-bottom: 10px;
+padding-bottom: 20px;
 padding-top: 4px;
+margin-top:20px;
 
 `;
 const QuantityButton = styled.button`
@@ -108,21 +98,16 @@ border-radius: 10px;
 margin: 0px 10px;
 
 @media screen and (max-width: 770px) {
-   
-   font-size: 1.2rem;
-   width: 15%;
-   
-   text-align: center;
-  
-   }
 
-@media screen and (max-width: 430px) {
-   
-   font-size: 1.2rem;
-   width: 15%;
- 
-   
-   }
+    font-size: 1.2rem;
+    width: 15%;
+    text-align: center;
+    }
+
+    @media screen and (max-width: 430px) {
+    font-size: 1.2rem;
+    width: 15%;
+    }
 `;
 
 const CityHolder = styled.div`
@@ -269,10 +254,6 @@ export default function CartPage() {
         }
     }
 
-
-
-
-
     // cart coupons
     const [options, setOptions] = useState([]);
     const [selectedOption, setSelectedOption] = useState('');
@@ -316,7 +297,7 @@ export default function CartPage() {
                         height={800}
                     />
                     <Box>
-                        <div className="flex flex-col gap-10 ">
+                        <div className="flex flex-col gap-10">
 
                             <div className='flex flex-col gap-4 mt-4 bg-green-200 p-4 rounded-md shadow'>
 
@@ -329,7 +310,6 @@ export default function CartPage() {
                             </div>
                         </div>
                     </Box>
-
                 </Center>
             </>
         )
@@ -338,210 +318,240 @@ export default function CartPage() {
     return (
         <div className="overflow-x-hidden">
             <Nav />
-            <Center>
-                <motion.div
-                    className="container text-center"
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 1, delay: 0.5 }}
+            {/* <Center> */}
+            <motion.div
+                className="text-center"
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1, delay: 0.5 }}
 
-                >
-
-                    <ColumnsWrapper>
-                        <Box>
-                            <h2>Cart</h2>
-                            {!cartProducts?.length && (
-                                <>
-                                    <div>
-                                        Your cart is empty
-                                    </div>
-
-                                </>
-                            )}
-                            {
-                                products?.length > 0 && (
-                                    <StyledTable>
-                                        <thead>
-                                            <tr>
-
-                                                <th>Product</th>
-                                                <th>Quantity</th>
-                                                <th>Price</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-
-
-
-                                            {products.map(product => (
-                                                <>
-                                                    <tr key={product._id}>
-                                                        <ProductCell>
-
-                                                            <td>
-                                                                <img src={product.images[0]} alt="image" />
-                                                            </td>
-                                                            <td>    {product.title}</td>
-                                                        </ProductCell>
-                                                        <td >
-
-
-                                                            <QuantityButton onClick={() => lessOfThisProduct(product._id)} >-</QuantityButton>
-                                                            {cartProducts.filter(id => id === product._id).length}
-                                                            <QuantityButton onClick={() => moreOfThisProduct(product._id)}>+</QuantityButton>
-                                                        </td>
-                                                        <td>₹{cartProducts.filter(id => id === product._id).length * product.price}</td>
-
-                                                    </tr>
-
-                                                </>
-                                            )
-                                            )
-                                            }
-                                            <tr>
-                                                <td>
-                                                    <ClearButton onClick={clearAll}>
-                                                        Clear Cart
-                                                    </ClearButton>
-                                                </td>
-                                                <td></td>
-                                                <td className="flex flex-col">
-                                                    <span className="text-gray-400 line-through">
-                                                        ₹{total}
-                                                    </span>
-                                                    <span className={finalPrice !== 0 ? "line-through text-gray-400" : "" + "text-gray-800 font-bold"}
-
-                                                    >
-                                                        ₹{dp}
-                                                    </span>
-                                                    {finalPrice !== 0 &&
-                                                        <span className="text-gray-800 font-bold">
-                                                            ${finalPrice}
-                                                        </span>
-                                                    }
-                                                </td>
-                                            </tr>
-
-
-                                        </tbody>
-                                    </StyledTable>
-
-
-                                )
-                            }
-                            {
-                                tokensLoaded &&
-                                <div className="px-2 mt-8 shadow-lg">
-
-                                    <select id="dropdown" value={selectedOption} onChange={handleOptionChange}
-
-                                        className="w-full"
-                                    >
-                                        <option value="">Select your token</option>
-                                        {options.map(option => (
-                                            <>
-                                                <option key={option._id} value={option.couponPrice}>
-                                                    {option.couponPrice} {option.couponName}
-                                                </option>
-                                            </>
-                                        ))}
-                                    </select>
+            >
+                <ColumnsWrapper>
+                    <Box>
+                        <h2 className='text-blue-950 font-extrabold text-3xl mb-7 uppercase'>NextZone - Cart</h2>
+                        {!cartProducts?.length && (
+                            <>
+                                <div>
+                                    Your cart is empty
                                 </div>
-                            }
-                        </Box>
 
-                        {!!cartProducts?.length && (
-                            <Box>
-                                <h2>Order Information</h2>
-
-
-                                <Input type="text"
-                                    required
-                                    placeholder="Name"
-                                    value={name}
-                                    name="name"
-                                    onChange={e => setName(e.target.value)} />
-                                <Input type="text"
-                                    placeholder="Email"
-                                    required
-                                    value={email}
-
-                                    name="email"
-                                    onChange={e => setEmail(e.target.value)} />
-                                <CityHolder>
-                                    <Input type="text"
-                                        placeholder="City"
-                                        required
-                                        value={city}
-                                        name="city"
-                                        onChange={e => setCity(e.target.value)} />
-                                    <Input type="text"
-                                        placeholder="Postal Code"
-                                        value={postalCode}
-                                        name="postalCode"
-                                        required
-                                        onChange={e => setPostalCode(e.target.value)} />
-                                </CityHolder>
-                                <Input type="text"
-                                    placeholder="Street Address"
-                                    value={streetAddress}
-                                    required
-                                    name="streetAddress"
-                                    onChange={e => setStreetAddress(e.target.value)} />
-                                <Input type="text"
-                                    placeholder="Country"
-                                    value={country}
-                                    required
-                                    name="country"
-                                    onChange={e => setCountry(e.target.value)} />
-
-                                <StyledButton onClick={goToPayment}>
-                                    <span>
-                                        Continue To Payment
-                                    </span>
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        strokeWidth={1.5}
-                                        stroke="currentColor"
-                                        className="w-6 h-6 hidden">
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-                                    </svg>
-                                </StyledButton>
-                                <StyledButton onClick={payOnDelivery}>
-                                    <span>
-                                        Pay on Delivery
-                                    </span>
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        strokeWidth={1.5}
-                                        stroke="currentColor"
-                                        className="w-6 h-6 hidden">
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-                                    </svg>
-                                </StyledButton>
-
-                            </Box>
-
+                            </>
                         )}
+                        {
+                            products?.length > 0 && (
+                                <StyledTable>
+                                    <thead>
+                                        <tr>
+
+                                            <th className="pl-6"><span className='ml-[4.6rem] text-blue-950 font-bold text-xl mb-7 align-middle'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Product</span></th>
+                                            <th className="pl-6"><span className='ml-8 text-blue-950 font-bold text-xl mb-7 align-middle'>&nbsp;&nbsp;&nbsp;Quantity</span></th>
+                                            <th><span className='ml-4 text-blue-950 font-bold text-xl mb-7 align-middle'>Price</span></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
 
 
 
-                    </ColumnsWrapper>
-                </motion.div>
-            </Center>
-            <Footer />
+                                        {products.map(product => (
+                                            <>
+                                                <tr key={product._id}>
+                                                    <ProductCell>
 
-        </div>
+                                                        <td className="object-contain">
+                                                            <img className='ml-12 align-middle h-[150px] w-[200px]' src={product.images[0]} alt="image" />
+                                                        </td>
+                                                        <td> <span className="uppercase ml-[-10px] mt-4 text-blue-950 font-bold">{product.title}</span></td>
+                                                    </ProductCell>
+                                                    <td >
+
+
+                                                        <QuantityButton onClick={() => lessOfThisProduct(product._id)} >-</QuantityButton>
+                                                        {cartProducts.filter(id => id === product._id).length}
+                                                        <QuantityButton onClick={() => moreOfThisProduct(product._id)}>+</QuantityButton>
+                                                    </td>
+                                                    <td>₹{cartProducts.filter(id => id === product._id).length * product.price}</td>
+
+                                                </tr>
+
+                                            </>
+                                        )
+                                        )
+                                        }
+                                    </tbody>
+                                </StyledTable>
+
+
+                            )
+                        }
+                    </Box>
+
+                    {/* {!!cartProducts?.length && ( */}
+                    <Box className="ml-[-305px]">
+                        <div className="fixed overflow-hidden h-[100vh]">
+
+                            <StyledTable>
+                                <tr>
+                                    <td className="flex flex-col pl-3">
+                                        <div>
+                                            <span className="text-gray-800 font-bold text-2xl">
+                                                Total Amount : &nbsp;
+                                            </span>
+                                            <span className="text-gray-400 line-through text-2xl">
+                                                ₹{total}
+                                            </span>
+                                        </div>
+                                        <div className="mt-2">
+                                            <span className="text-gray-800 font-bold text-2xl">
+                                                Amount After Discount : &nbsp;
+                                            </span>
+                                            <span className={finalPrice !== 0 ? "line-through text-gray-400 text-2xl" : "" + "text-gray-800 font-bold text-2xl"}
+                                            >
+                                                ₹{dp}
+                                            </span>
+                                        </div>
+                                        {finalPrice !== 0 ?
+                                            <div className="mt-2">
+                                                <span className="text-gray-800 font-bold text-2xl">
+                                                    Grand Total  : &nbsp;
+                                                </span>
+                                                <>
+                                                    <span className="text-gray-800 font-bold text-2xl">
+                                                        ${finalPrice}
+                                                    </span>
+                                                </>
+                                            </div> :
+                                            <div className="mt-2">
+                                                <span className="text-gray-800 font-bold text-2xl">
+                                                    Grand Total  : &nbsp;
+                                                </span>
+                                                <>
+                                                    <span className="text-gray-800 font-bold text-2xl">
+                                                        ${dp}
+                                                    </span>
+                                                </>
+                                            </div>
+                                        }
+                                        {
+                                            tokensLoaded &&
+                                            <div className="px-2 mt-6 mb-6 shadow-lg">
+
+                                                <select id="dropdown" value={selectedOption} onChange={handleOptionChange}
+                                                    className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-400 focus:outline-none focus:ring-0 focus:border-gray-200 peer pl-3 rounded-md"
+                                                >
+                                                    <option value="">Select your token</option>
+                                                    {options.map(option => (
+                                                        <>
+                                                            <option key={option._id} value={option.couponPrice}>
+                                                                {option.couponPrice} {option.couponName}
+                                                            </option>
+                                                        </>
+                                                    ))}
+                                                </select>
+                                            </div>
+                                        }
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td className="pl-4 pr-4">
+                                        <button className="w-[100%] md:w-[100%] bg-neutral-800 text-white font-bold h-[2.5rem] rounded-md hover:border  hover:border-blue-950 hover:text-gray-200 hover:bg-neutral-600 ease-in-out duration-300 flex justify-center items-center gap-4 hover:gap-7" onClick={clearAll}>
+                                            Clear Cart
+                                        </button>
+                                    </td>
+                                </tr>
+                            </StyledTable>
+
+
+                            <h2 className='text-blue-950 font-extrabold text-3xl mt-10 mb-4 uppercase'>Order Information</h2>
+
+
+                            <Input type="text"
+                                required
+                                placeholder="Name"
+                                value={name}
+                                name="name"
+                                onChange={e => setName(e.target.value)} />
+                            <Input type="text"
+                                placeholder="Email"
+                                required
+                                value={email}
+
+                                name="email"
+                                onChange={e => setEmail(e.target.value)} />
+                            <CityHolder>
+                                <Input type="text"
+                                    placeholder="City"
+                                    required
+                                    value={city}
+                                    name="city"
+                                    onChange={e => setCity(e.target.value)} />
+                                <Input type="text"
+                                    placeholder="Postal Code"
+                                    value={postalCode}
+                                    name="postalCode"
+                                    required
+                                    onChange={e => setPostalCode(e.target.value)} />
+                            </CityHolder>
+                            <Input type="text"
+                                placeholder="Street Address"
+                                value={streetAddress}
+                                required
+                                name="streetAddress"
+                                onChange={e => setStreetAddress(e.target.value)} />
+                            <Input type="text"
+                                placeholder="Country"
+                                value={country}
+                                required
+                                name="country"
+                                onChange={e => setCountry(e.target.value)} />
+
+                            <button className="w-[100%] md:w-[100%] bg-neutral-800 text-white font-bold h-[2.5rem] rounded-md hover:border  hover:border-blue-950 hover:text-gray-200 hover:bg-neutral-600 ease-in-out duration-300 flex justify-center items-center gap-4 hover:gap-7 mt-3" onClick={goToPayment}>
+                                <span>
+                                    Continue To Payment
+                                </span>
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    strokeWidth={1.5}
+                                    stroke="currentColor"
+                                    className="w-6 h-6 hidden">
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+                                </svg>
+                            </button>
+                            <button className="w-[100%] md:w-[100%] bg-neutral-800 text-white font-bold h-[2.5rem] rounded-md hover:border  hover:border-blue-950 hover:text-gray-200 hover:bg-neutral-600 ease-in-out duration-300 flex justify-center items-center gap-4 hover:gap-7 mt-2" onClick={payOnDelivery}>
+                                <span>
+                                    Pay on Delivery
+                                </span>
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    strokeWidth={1.5}
+                                    stroke="currentColor"
+                                    className="w-6 h-6 hidden">
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+                                </svg>
+                            </button>
+
+                        </div>
+                    </Box>
+
+                    {/* )} */}
+
+
+
+                </ColumnsWrapper>
+            </motion.div>
+            {/* </Center> */}
+            {/* <Footer /> */}
+
+        </div >
     )
 }
