@@ -106,7 +106,7 @@ export default function Account() {
             <Nav />
 
 
-            <StyledDiv className='flex gap-8 justify-between'>
+            <StyledDiv className='flex gap-2'>
                 {!editButtonClicked ?
                     <div className='flex flex-col gap-4 bg-white px-4 pr-20 w-[28vw]'>
                         <div className='flex flex-col gap-2 items-start justify-start pt-4'>
@@ -225,7 +225,7 @@ export default function Account() {
                     </div>
                 }
                 <div>
-                    <h1 className='text-4xl py-4 bg-white px-8 w-[48vw]'>
+                    <h1 className='text-4xl py-4 bg-white px-8 w-[39vw]'>
                         Orders History
                     </h1>
 

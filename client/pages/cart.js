@@ -13,6 +13,7 @@ import Footer from "@/components/Footer";
 import { Toaster, toast } from "react-hot-toast";
 import Confetti from 'react-confetti'
 import Nav from "@/components/Navbar";
+import ProductSider from "@/components/ProductSider";
 
 const ColumnsWrapper = styled.div`
 display: grid;
@@ -555,6 +556,9 @@ export default function CartPage() {
 
                         </div>
                     </Box>
+                    <div className="absolute ml-[68.7vw]">
+                        <ProductSider />
+                    </div>
 
                     {/* )} */}
 
