@@ -13,6 +13,7 @@ const ProductSider = () => {
         const res = await axios.post("/api/fetchrecommendation", { userId });
         let arr = res.data
         arr = arr.reverse()
+        arr = arr.slice(0,8)
         setRecommendedProducts(arr);
     }
     useEffect(() => {
@@ -24,10 +25,10 @@ const ProductSider = () => {
         </>
     return (
         <>
-            <div className='bg-white px-8 flex flex-col items-center justify-center min-h-[90vh]'>
+            <div className='bg-white px-8 flex flex-col items-center justify-center min-h-[90vh] w-[500px]'>
 
-                <div className='text-2xl flex items-center justify-center mt-[-40px] text-center font-extrabold '>Continue shopping for....</div>
-                <div className='flex flex-col gap-4'>
+                <div className='text-3xl flex items-center justify-center text-center font-extrabold uppercase'>Continue shopping for....</div>
+                <div className='flex flex-wrap gap-4'>
 
                     {recommendedProducts.length > 0 && recommendedProducts.map(product => (
                         <div key={product._id}>

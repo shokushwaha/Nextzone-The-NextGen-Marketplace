@@ -19,7 +19,7 @@ export default async function handler(req, res) {
                 }
 
                 user.history.push(prodId);
-                if (user.history.length === 6) {
+                if (user.history.length === 11) {
                     user.history.shift();
                 }
 

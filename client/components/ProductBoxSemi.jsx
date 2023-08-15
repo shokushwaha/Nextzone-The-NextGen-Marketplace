@@ -14,9 +14,10 @@ align-items: center;
 justify-content: center;
 width: 100px;
 border-radius: 10px;
+margin-left:10px;
 `;
 const ProductWrapper = styled.div`
-width:240px;
+width:200px;
 `;
 
 const StyledTitle = styled(Link)`
@@ -24,8 +25,6 @@ text-transform: capitalize;
 font-weight: 800;
 margin: 0;
 text-align: center;
-
-
 `;
 
 const StyledImage = styled.img`
@@ -33,7 +32,7 @@ height: 100px;
 object-fit: contain;
 mix-blend-mode: multiply;
 border-radius: 10px;
-
+margin-right:15px;
 `
 const ProductInfoBox = styled.div`
 margin-top: 10px;
@@ -117,15 +116,12 @@ export default function ProductBoxSemi({ _id, title, description, images, price,
 
                                     ₹{price}
                                 </Price>
-                                <Discount>
-                                    {discount}% off
-                                </Discount>
                             </SubPrice>
 
                             <div>
 
                                 <StyledButton primary onClick={() => addProduct(_id)} >
-                                    <CartIcon /> <span className="">Add To Cart</span>
+                                    <CartIcon />
                                 </StyledButton>
                             </div>
                         </PriceRow>
