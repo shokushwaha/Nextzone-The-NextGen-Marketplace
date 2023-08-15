@@ -476,6 +476,7 @@ export default function Account() {
     const [address, setAddress] = useState('');
     const [phoneNum, setPhoneNum] = useState('');
     const [orders, setOrders] = useState([]);
+
     const router = useRouter();
 
     useEffect(() => {
@@ -486,7 +487,11 @@ export default function Account() {
             setEmail(loggedInUser?.data?.email);
             setPhoneNum(loggedInUser?.data?.phoneNum);
             setAddress(loggedInUser?.data?.address);
-            setOrders(loggedInUser?.data?.orders);
+
+
+            const uniqueSet = new Set(loggedInUser?.data?.orders);
+            const uniqueArray = [...uniqueSet];
+            setOrders(uniqueArray);
 
             const temp = loggedInUser?.data?.cart;
             for (let i = 0; temp && i < temp.length; i++) {
@@ -496,7 +501,6 @@ export default function Account() {
 
         }
     }, [])
-
 
 
     const handleDeleteAccount = async () => {
