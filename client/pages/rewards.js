@@ -96,14 +96,6 @@ const Rewards = () => {
                 </div>
             }
 
-
-
-
-
-
-
-
-
             <div className='flex items-center justify-center text-4xl py-2 mt-2 text-neutral-800 font-extrabold'>
 
                 NextZone Rewards
@@ -150,7 +142,7 @@ const Rewards = () => {
             {/* </Center> */}
 
 
-            <div className='mx-auto w-[80vw]'>
+            <div className={showTermsAndConditions ? "h-[178vh] mx-auto w-[80vw]" : 'mx-auto w-[80vw]'}>
                 <span className='flex items-center justify-center text-2xl font-bold mt-4'>Redemmed Tokens</span>
 
                 {redemmedTokens.length === 0 && <span className='text-gray-400 flex items-center justify-center mt-4'>
@@ -158,7 +150,7 @@ const Rewards = () => {
                     You havn't redemmed any tokens yet!
                 </span>
                 }
-                <div className='flex  w-[80vw] mx-auto justify-center items-center flex-wrap '>
+                <div className='flex w-[80vw] mx-auto justify-center items-center flex-wrap '>
                     {redemmedTokens && redemmedTokens.map(token => (
                         <>
                             <RedemmedTokens name={token.couponName} symbol={token.couponSymbol} price={token.couponPrice} usedOn={token.usedOn} />
@@ -169,7 +161,7 @@ const Rewards = () => {
                 </div>
 
             </div>
-            <Footer />
+            {!showTermsAndConditions && <Footer />}
 
         </>
     )

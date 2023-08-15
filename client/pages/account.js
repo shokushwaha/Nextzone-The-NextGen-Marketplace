@@ -10,11 +10,10 @@ import Footer from '@/components/Footer';
 import ProductSider from '@/components/ProductSider';
 import CartIcon from '@/components/icons/CartIcon';
 import { Toaster, toast } from 'react-hot-toast';
+import { EmailIcon, EmailShareButton, FacebookIcon, FacebookShareButton, PinterestIcon, PinterestShareButton, TelegramIcon, TelegramShareButton, TwitterIcon, TwitterShareButton, WhatsappIcon, WhatsappShareButton } from 'react-share';
 
 const StyledDiv = styled.div`
 
-/* min-height: 90vh; */
-background-color: white;
 @media screen and (max-width: 650px) {
    
    display  :flex ;
@@ -130,7 +129,7 @@ export default function Account() {
                                 <span className='text-xl uppercase'>{name}</span>
                             </span>
                         </div>
-                        <div className='flex flex-col gap-4 pt-4'>
+                        <div className='flex flex-col gap-4 pt-4 pr-6'>
 
                             <div className='flex items-center gap-4'>
                                 <span className='flex  items-center gap-2 text-gray-500'>
@@ -191,10 +190,10 @@ export default function Account() {
                                 </span>
                             </div>
                             <div>
-                                <button className='bg-sky-400 rounded-md w-full text-center hover:bg-sky-500 px-4 py-1 shadow ' onClick={() => setEditButtonClicked(true)}  >Edit Details</button>
+                                <button className='bg-sky-400 rounded-md w-full text-center hover:bg-sky-500 px-4 py-1 shadow mb-[-10px]' onClick={() => setEditButtonClicked(true)}  >Edit Details</button>
                             </div>
                             <div>
-                                <button className='bg-red-400 rounded-md w-full text-center hover:bg-red-500 px-4 py-1 shadow ' onClick={() => {
+                                <button className='bg-red-400 rounded-md w-full text-center hover:bg-red-500 px-4 py-1 shadow mb-[-10px]' onClick={() => {
                                     setLoggedIn(false)
                                     localStorage.removeItem('loggedIn');
                                     localStorage.removeItem('loggedInUser');
@@ -205,7 +204,7 @@ export default function Account() {
                                 <button className='bg-gray-400 rounded-md w-full text-center hover:bg-gray-500 px-4 py-1 shadow ' onClick={handleDeleteAccount}  >Delete Account</button>
                             </div>
 
-                            <div className='flex items-center justify-center gap-2  bg-gray-200  rounded-md shadow-lg mt-12 p-4'>
+                            <div className='flex items-center justify-center gap-2  bg-gray-200  rounded-md shadow-lg mt-1 p-6'>
                                 <span className='flex items-center justify-center'>
                                     <img src="/refer.png" className='w-40' />
                                 </span>
@@ -227,7 +226,26 @@ export default function Account() {
                                         </span>
                                     </span>
                                 </span>
-
+                            </div>
+                            <div className="flex gap-2 items-center justify-center">
+                                <TwitterShareButton url={`http://localhost:3000/register?account=${currentAccount}`}>
+                                    <TwitterIcon size={32} round={true} />
+                                </TwitterShareButton>
+                                <WhatsappShareButton url={`http://localhost:3000/register?account=${currentAccount}`}>
+                                    <WhatsappIcon size={32} round={true} />
+                                </WhatsappShareButton>
+                                <TelegramShareButton url={`http://localhost:3000/register?account=${currentAccount}`}>
+                                    <TelegramIcon size={32} round={true} />
+                                </TelegramShareButton>
+                                <FacebookShareButton url={`http://localhost:3000/register?account=${currentAccount}`}>
+                                    <FacebookIcon size={32} round={true} />
+                                </FacebookShareButton>
+                                <EmailShareButton url={`http://localhost:3000/register?account=${currentAccount}`}>
+                                    <EmailIcon size={32} round={true} />
+                                </EmailShareButton>
+                                <PinterestShareButton url={`http://localhost:3000/register?account=${currentAccount}`}>
+                                    <PinterestIcon size={32} round={true} />
+                                </PinterestShareButton>
                             </div>
                         </div>
                     </div>
@@ -365,12 +383,14 @@ export default function Account() {
                         </>
                     }
                 </div>
-                <div className='w-[20vw]'>
+                <div className='h-[100vh] bg-white'>
                     <ProductSider />
                 </div>
             </StyledDiv>
 
-            <Footer />
+            <div className='mt-[-25px]'>
+                <Footer />
+            </div>
 
         </>
     )
