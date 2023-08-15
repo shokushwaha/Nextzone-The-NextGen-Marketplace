@@ -126,7 +126,7 @@ border-radius: 4px;
 `;
 export default function CartPage() {
 
-    const { loggedInUser, cartProducts, addProduct, removeProduct, clearCart, currentAccount } = useContext(CartContext);
+    const { loggedInUser, fetchUpdatedUserDetails, cartProducts, addProduct, removeProduct, clearCart, currentAccount } = useContext(CartContext);
     const [products, setProducts] = useState([]);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -213,7 +213,19 @@ export default function CartPage() {
             return;
         }
 
+        let userData = localStorage.getItem('loggedInUser');
+        userData = JSON.parse(userData);
+        let updatedUser = { ...userData };
+
+        for (const cartProduct of cartProducts) {
+            updatedUser.data.orders.push(cartProduct);
+        }
+        localStorage.setItem('loggedInUser', JSON.stringify(updatedUser));
+
         await axios.post('/api/order', { id, cartProducts });
+
+
+
 
         if (finalPrice !== 0) {
             const response = await axios.post('/api/checkoutpod', {
@@ -252,6 +264,7 @@ export default function CartPage() {
 
             );
         }
+        fetchUpdatedUserDetails();
     }
 
     // cart coupons

@@ -1,7 +1,7 @@
 import { model, models, Schema } from "mongoose";
 
 const PodOrderSchema = new Schema({
-    line_items: Object,
+
     name: String,
     email: String,
     city: String,
