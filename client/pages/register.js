@@ -461,7 +461,8 @@ export default function Register() {
         e.preventDefault();
         const res = await axios.post('/api/register', { name, email, password, phoneNum, address });
         if (res) {
-            mintTokens();
+            if (router?.query?.account)
+                mintTokens();
             toast.success("Registered successfully");
             router.push('/login');
         }
