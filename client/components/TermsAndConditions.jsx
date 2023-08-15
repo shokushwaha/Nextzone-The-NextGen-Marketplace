@@ -163,6 +163,24 @@ const TermsAndConditions = ({ setShowTermsAndConditions }) => {
 
 
 
+                                <li className='flex items-center gap-4 mt-[4px] '>
+                                    <InfoIcon />
+                                    <span > A
+                                        <span className='text-gray-800 mx-1 font-bold mt-1'>
+                                            Bronze Token
+                                        </span>
+                                        of worth
+                                        <span className='mx-1 text-gray-800 font-extrabold'>
+                                            ₹ 100
+
+                                        </span>
+                                        will be credited on every
+                                        <span className='mx-1 text-gray-800 font-extrabold'>
+                                            successful referal
+                                        </span>
+                                        to the website.
+                                    </span>
+                                </li>
 
                                 <li className='flex items-center gap-4 mt-[4px] '>
                                     <InfoIcon />

@@ -40,7 +40,7 @@ const Footer = () => {
                     <Typography>Performance</Typography>
                     <Typography>Details</Typography>
                 </Stack>
-                <Stack direction={'column'} pl={'9%'} className='z-[-1]'>
+                <Stack direction={'column'} pl={'9%'}>
                     <Typography fontWeight={'700'}>SIGN UP</Typography>
                     <Typography pb='3%'>You may unsubscribe at any moment. For that purpose, please find our <br />
                         contact info in the legal notice.</Typography>

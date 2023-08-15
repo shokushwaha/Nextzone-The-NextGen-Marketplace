@@ -503,7 +503,7 @@ export default function Register() {
             const tokenId = randomNumber;
 
 
-            const tokenName = "Bronze Token";
+            const tokenName = "Silver Token";
 
 
             const tokenSymbol = "Earned via Referal";
