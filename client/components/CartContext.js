@@ -504,9 +504,6 @@ export function CartContextProvider({ children }) {
     let id = loggedInUser?.data?._id;
 
     useEffect(() => {
-
-
-
         if (ls && ls.getItem('cart')) {
 
             setCartProducts(JSON.parse(ls.getItem('cart')));
@@ -520,7 +517,12 @@ export function CartContextProvider({ children }) {
     }, [])
 
 
-
+    async function fetchUpdatedUserDetails() {
+        if (ls) {
+            const user = JSON.parse(ls.getItem('loggedInUser'))
+            setLoggedInUser(user);
+        }
+    }
 
     async function addProduct(productId) {
         await axios.post('/api/addtocart', {
@@ -618,7 +620,7 @@ export function CartContextProvider({ children }) {
 
 
     return (
-        <CartContext.Provider value={{ loggedIn, setLoggedIn, loggedInUser, setLoggedInUser, cartProducts, setCartProducts, addProduct, removeProduct, clearCart, ConnectToWallet, connectWallet, currentAccount, showNavBar, setShowNavBar }}>
+        <CartContext.Provider value={{ loggedIn, setLoggedIn, loggedInUser, fetchUpdatedUserDetails, setLoggedInUser, cartProducts, setCartProducts, addProduct, removeProduct, clearCart, ConnectToWallet, connectWallet, currentAccount, showNavBar, setShowNavBar }}>
             {children}
         </CartContext.Provider>
     );
