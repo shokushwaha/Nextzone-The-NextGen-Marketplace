@@ -452,7 +452,6 @@ export default function Register() {
     const router = useRouter();
 
     const handleRegister = async (e) => {
-
         if (!name || !email || !password || !phoneNum || !address) {
             toast.error("Fill all the fields")
             return;
