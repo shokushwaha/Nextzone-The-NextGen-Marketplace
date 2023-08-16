@@ -14,6 +14,7 @@ import { Toaster, toast } from "react-hot-toast";
 import Confetti from 'react-confetti'
 import Nav from "@/components/Navbar";
 import ProductSider from "@/components/ProductSider";
+import { ToastContainer } from "react-toastify";
 
 const ColumnsWrapper = styled.div`
 display: grid;
@@ -290,7 +291,13 @@ export default function CartPage() {
 
         setSelectedDiscountPrice(event.target.value);
         setSelectedOption(event.target.value);
-        setFinalPrice(dp - event.target.value);
+        if (dp - event.target.value < 0) {
+            toast.error("Coupon cannot be applied");
+            setSelectedOption("");
+
+            return;
+        }
+        setFinalPrice(dp - event.target.value > 0 ? dp - event.target.value : dp);
     };
 
 
@@ -304,7 +311,7 @@ export default function CartPage() {
                 <Nav />
 
                 <Center>
-                    <Toaster
+                    <ToastContainer
                         position="top-right"
                         reverseOrder={false}
                     />

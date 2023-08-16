@@ -6,7 +6,6 @@ export default function KommunicateChat() {
       appId: "f65c137ea853fa98e3ffffcdd2b097aa",
       popupWidget: true,
       automaticChatOpenOnNavigation: true,
-      
     };
 
     kommunicateSettings.restartConversationByUser = true;
@@ -18,7 +17,7 @@ export default function KommunicateChat() {
 
     var h = document.getElementsByTagName("head")[0];
     h.appendChild(s);
-    
+
 
     window.kommunicate = m;
     m._globals = kommunicateSettings;
