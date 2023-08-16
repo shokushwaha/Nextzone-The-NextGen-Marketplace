@@ -17,6 +17,7 @@ border-radius: 10px;
 `;
 const ProductWrapper = styled.div`
 width:240px;
+border-radius: 10px;
 `;
 
 const StyledTitle = styled(Link)`

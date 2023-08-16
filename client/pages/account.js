@@ -15,15 +15,15 @@ import { EmailIcon, EmailShareButton, FacebookIcon, FacebookShareButton, Pintere
 const StyledDiv = styled.div`
 
 @media screen and (max-width: 650px) {
-   
-   display  :flex ;
-   flex-direction: column;
-align-items: center;
-   justify-content: center;
-   gap: 20px;
-   
-   }
-   
+    
+    display  :flex ;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    
+    }
+    
 `;
 
 
@@ -75,20 +75,15 @@ export default function Account() {
         axios.post('/api/cart', { ids: orders }).then(response => {
             setOrderArr(response.data)
             setShowOrderButton(true)
-
             console.log(response.data)
         });
-
     }
-
-
 
     const [editButtonClicked, setEditButtonClicked] = useState(false);
     const [showOrderButton, setShowOrderButton] = useState(false);
     const updateUser = async (e) => {
         e.preventDefault();
         await axios.post('/api/updateuser', { id, name, email, phoneNum, address });
-
         setEditButtonClicked(false);
     }
 
@@ -103,8 +98,6 @@ export default function Account() {
             console.error('Failed to copy to clipboard:', error);
         }
     };
-
-
 
     return (
         <>
@@ -190,7 +183,7 @@ export default function Account() {
                                 </span>
                             </div>
                             <div>
-                                <button className='bg-sky-400 rounded-md w-full text-center hover:bg-sky-500 px-4 py-1 shadow mb-[-10px]' onClick={() => setEditButtonClicked(true)}  >Edit Details</button>
+                                <button className='bg-sky-400 rounded-md w-full text-center hover:bg-sky-500 px-4 py-1 shadow mb-[-10px]' onClick={() => setEditButtonClicked(true)}>Edit Details</button>
                             </div>
                             <div>
                                 <button className='bg-red-400 rounded-md w-full text-center hover:bg-red-500 px-4 py-1 shadow mb-[-10px]' onClick={() => {
