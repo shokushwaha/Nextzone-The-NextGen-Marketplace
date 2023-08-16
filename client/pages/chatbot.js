@@ -1,45 +1,27 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-const Chatbot = () => {
-    const [question, setQuestion] = useState('');
-    const [answer, setAnswer] = useState('');
-    const callOpenAI = async () => {
-        const apiKey = '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';
-        const prompt = `Question: ${question}\nAnswer:`;
+import Kommunicate from "@kommunicate/kommunicate-chatbot-plugin";
 
-        try {
-            const response = await axios.post(
-                'https://api.openai.com/v1/engines/davinci-codex/completions',
-                {
-                    prompt: prompt,
-                    max_tokens: 100,
-                },
-                {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${apiKey}`,
-                    },
-                }
-            );
-
-            setAnswer(response.data.choices[0].text.trim());
-        } catch (error) {
-            console.error('Error calling OpenAI API:', error);
-        }
+export default function KommunicateChat() {
+  (function (d, m) {
+    var kommunicateSettings = {
+      appId: "f65c137ea853fa98e3ffffcdd2b097aa",
+      popupWidget: true,
+      automaticChatOpenOnNavigation: true,
+      
     };
-    return (
-        <>
-            <input
-                type="text"
-                value={question}
-                onChange={(e) => setQuestion(e.target.value)}
-                placeholder="Enter your question"
-            />
-            <button onClick={callOpenAI}>Get Answer</button>
-            <div>Answer: {answer}</div>
 
-        </>
-    )
+    kommunicateSettings.restartConversationByUser = true;
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.async = true;
+
+    s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
+
+    var h = document.getElementsByTagName("head")[0];
+    h.appendChild(s);
+    
+
+    window.kommunicate = m;
+    m._globals = kommunicateSettings;
+  })(document, window.kommunicate || {});
+  return <div></div>;
 }
-
-export default Chatbot

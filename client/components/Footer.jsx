@@ -9,10 +9,12 @@ import icon2 from '@/public/paypal.jpg'
 import icon3 from '@/public/income.jpg'
 import icon4 from '@/public/discover.jpg'
 import Image from 'next/image';
+import KommunicateChat from '@/pages/chatbot';
 
 const Footer = () => {
     return (
         <div className='bg-neutral-800 text-gray-400 mt-6'>
+            <KommunicateChat/>
             <Stack direction={'row'} gap={9} pl='5%' pt='4%'>
                 <Stack direction={'column'}>
                     <Typography fontWeight={'900'}>ABOUT US</Typography>
