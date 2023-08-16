@@ -11,7 +11,7 @@ export default async function handler(req, res) {
     const {
         name, email, city,
         postalCode, streetAddress, country,
-        cartProducts, discountedPrice
+        cartProducts, dp
     } = req.body;
     await mongooseConnect();
     const productsIds = cartProducts;
@@ -28,7 +28,7 @@ export default async function handler(req, res) {
                 price_data: {
                     currency: 'USD',
                     product_data: { name: productInfo.title },
-                    unit_amount: discountedPrice * 100,
+                    unit_amount: dp * 100,
                 },
             });
         }
@@ -44,7 +44,7 @@ export default async function handler(req, res) {
         mode: 'payment',
         customer_email: email,
         success_url: process.env.PUBLIC_URL + '/cart?success=1',
-        cancel_url: process.env.PUBLIC_URL + '/cart?canceled=1',
+        cancel_url: process.env.PUBLIC_URL + '/',
         metadata: { orderId: orderDoc._id.toString(), test: 'ok' },
     });
 

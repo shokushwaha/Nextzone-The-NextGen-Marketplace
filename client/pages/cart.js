@@ -189,19 +189,21 @@ export default function CartPage() {
         }
 
         await axios.post('/api/order', { id, cartProducts });
-
+        console.log(dp)
         const response = await axios.post('/api/checkout', {
             name, email, city, postalCode, streetAddress, country,
-            cartProducts, discountedPrice
+            cartProducts, dp
         });
+        // console.log(response)
         if (response.data.url) {
+            // clearCart();
             window.location = response.data.url;
         }
         else {
             alert("Some error occured")
         }
 
-        clearCart();
+
     }
 
 
