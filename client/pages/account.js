@@ -285,8 +285,13 @@ export default function Account() {
 
                     {
                         orders && orders.length === 0 ? <>
-                            <div className='text-gray-600 text-center mx-auto'>
-                                You haven&apos;t ordered any items yet
+                            <div className='text-gray-600 text-center mx-auto flex flex-col gap-4 items-center justify-center bg-white pb-[20vh]'>
+                                <span>
+                                    You haven&apos;t ordered any items yet
+                                </span>
+                                <button onClick={() => router.push('/')} className='bg-blue-200 px-4 py-2 shadow-lg rounded-lg hover:bg-blue-400 hover:scale-110'>Start shopping....</button>
+
+                                <img src={"/cart.jpg"} className='w-[360px] rounded-md shadow-xl animate-pulse' />
                             </div>
                         </> : <>
                             <div className='flex flex-col gap-2 bg-white'>
