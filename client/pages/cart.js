@@ -177,7 +177,7 @@ export default function CartPage() {
         const tempDp = products.find(p => p._id === productId)?.discount || 0;
         console.log(tempDp)
         total += price;
-        dp = dp + (price - (price * tempDp) / 100)
+        dp = dp + Math.floor((price - (price * tempDp) / 100))
     }
 
 
@@ -433,7 +433,7 @@ export default function CartPage() {
                                                 </span>
                                                 <>
                                                     <span className="text-gray-800 font-bold text-2xl">
-                                                        ${finalPrice}
+                                                        ₹{finalPrice}
                                                     </span>
                                                 </>
                                             </div> :
@@ -443,7 +443,7 @@ export default function CartPage() {
                                                 </span>
                                                 <>
                                                     <span className="text-gray-800 font-bold text-2xl">
-                                                        ${dp}
+                                                        ₹{dp}
                                                     </span>
                                                 </>
                                             </div>
