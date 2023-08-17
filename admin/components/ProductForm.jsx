@@ -237,7 +237,7 @@ export default function ProductForm({
                 value={productData.description}
             ></textarea>
 
-            <label>Price (USD)</label>
+            <label>Price (in INR)</label>
             <input
                 type="number"
                 placeholder="price"
