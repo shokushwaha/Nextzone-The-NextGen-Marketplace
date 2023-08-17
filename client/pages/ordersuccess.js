@@ -502,24 +502,26 @@ export default function Ordersuccess() {
             if (amount > 0 && amount < 1000) {
                 couponName = "Bronze Token"
                 couponSymbol = "Earned Via Purchase"
-                finalAmount = Math.floor(amount * 0.1)
+                finalAmount = Math.floor(amount * 0.01)
             }
             else if (amount >= 1000 && amount < 10000) {
                 couponName = "Silver Token"
                 couponSymbol = "Earned Via Purchase"
-                finalAmount = Math.floor(amount * 0.1)
+                finalAmount = Math.floor(amount * 0.01)
             }
             else if (amount >= 10000 && amount < 25000) {
                 couponName = "Gold Token"
                 couponSymbol = "Earned Via Purchase"
-                finalAmount = Math.floor(amount * 0.1)
+                finalAmount = Math.floor(amount * 0.01)
             }
             else {
                 couponName = "Premium Token"
                 couponSymbol = "Earned Via Purchase"
-                finalAmount = Math.floor(amount * 0.1)
+                finalAmount = Math.floor(amount * 0.01)
             }
 
+            if (finalAmount > 500)
+                finalAmount = 500
 
             setFTName(couponName);
             setFTSymbol(couponSymbol)
@@ -632,7 +634,7 @@ export default function Ordersuccess() {
                         You have to pay a amount of
                         <span className='px-2 text-2xl text-bold'>
 
-                            $
+                            ₹
                             {router.query.name}
                         </span>
                         at the time of delivery

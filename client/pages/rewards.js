@@ -142,7 +142,7 @@ const Rewards = () => {
             {/* </Center> */}
 
 
-            <div className={showTermsAndConditions ? "h-[178vh] mx-auto w-[80vw]" : 'mx-auto w-[80vw]'}>
+            <div className={showTermsAndConditions ? "h-[169vh] mx-auto w-[80vw]" : 'mx-auto w-[80vw]'}>
                 <span className='flex items-center justify-center text-2xl font-bold mt-4'>Redemmed Tokens</span>
 
                 {redemmedTokens.length === 0 && <span className='text-gray-400 flex items-center justify-center mt-4'>

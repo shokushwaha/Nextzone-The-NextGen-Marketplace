@@ -85,7 +85,7 @@ const TermsAndConditions = ({ setShowTermsAndConditions }) => {
                                         </span>
                                         will be provided ,
                                         <span className='mx-1 text-gray-800 font-bold'>
-                                            worth of 10% of the total expenditure.
+                                            worth of 1% of the total expenditure.
                                         </span>
                                         These tokens will be deposited into your MetaMask Account.
 
@@ -165,22 +165,20 @@ const TermsAndConditions = ({ setShowTermsAndConditions }) => {
 
                                 <li className='flex items-center gap-4 mt-[4px] '>
                                     <InfoIcon />
-                                    <span > A
+                                    <span > Maximum worth of issued token
                                         <span className='text-gray-800 mx-1 font-bold mt-1'>
-                                            Bronze Token
+                                            cannot
                                         </span>
-                                        of worth
+                                        exceed
                                         <span className='mx-1 text-gray-800 font-extrabold'>
-                                            ₹ 100
+                                            ₹ 500
+                                        </span>
+                                        per order .
 
-                                        </span>
-                                        will be credited on every
-                                        <span className='mx-1 text-gray-800 font-extrabold'>
-                                            successful referal
-                                        </span>
-                                        to the website.
                                     </span>
                                 </li>
+
+
 
                                 <li className='flex items-center gap-4 mt-[4px] '>
                                     <InfoIcon />

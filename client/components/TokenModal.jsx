@@ -17,11 +17,11 @@ const TokenModal = ({ ftName, ftSymbol, ftAmnt, transactionHash }) => {
                 <span>
 
                     <img src={
-                        ftAmnt * 10 > 0 && ftAmnt * 10 < 1000
+                        ftAmnt * 100 > 0 && ftAmnt * 100 < 1000
                             ? 'https://res.cloudinary.com/dt21djrjq/image/upload/v1691836232/bronze_b9ryxr.jpg'
-                            : ftAmnt * 10 >= 1000 && ftAmnt * 10 < 10000
+                            : ftAmnt * 100 >= 1000 && ftAmnt * 100 < 10000
                                 ? 'https://res.cloudinary.com/dt21djrjq/image/upload/v1691836199/silver_klhlqq.jpg'
-                                : ftAmnt * 10 >= 10000 && ftAmnt * 10 < 25000
+                                : ftAmnt * 100 >= 10000 && ftAmnt * 100 < 25000
                                     ? 'https://res.cloudinary.com/dt21djrjq/image/upload/v1691836123/gold_gyd341.jpg'
                                     : 'https://res.cloudinary.com/dt21djrjq/image/upload/v1691836170/premium_ibxcpn.jpg'
 

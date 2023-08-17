@@ -492,7 +492,7 @@ export default function Register() {
             const recipientAddress = currentAccount;
 
 
-            let amnt = 100;
+            let amnt = 50;
             const amountToMint = ethers.utils.parseEther(amnt.toString());
 
 
