@@ -37,8 +37,8 @@ export default function Products() {
                             productsList.map((item, i) => (
                                 <tr key={i}>
                                     <td>{item.title}</td>
-                                    <td>${item.price}</td>
-
+                                    <td>₹{item.price}</td>
+                                    <td> {item.discount}%</td>
 
                                     <td>
                                         <Link href={`/products/edit/${item._id}`} className="links primary-btn">

@@ -76,7 +76,7 @@ export default function Analytics() {
 
 
     return (
-        <div className="overflow-x-hidden">
+        <div className="overflow-x-hidden ">
 
 
             <div className="flex items-center text-3xl px-4 pb-4 mb-4 w-full border-b-2 border-gray-400"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-12 h-12">
@@ -93,7 +93,7 @@ export default function Analytics() {
                         Hold on, Loading....
                     </div>
                     :
-                    <div className="flex grow justify-around gap-20 flex-wrap pb-10">
+                    <div className="flex  gap-16 flex-wrap pb-10 px-4">
 
 
                         <div className="stat-box bg-gradient-to-r from-green-200 to-green-500 border-b-4 border-green-600 rounded-md shadow-lg shadow-green-800">
@@ -170,7 +170,7 @@ export default function Analytics() {
                                 </span>
                                 <span className="text-auto mt-2 font-extrabold text-center">
 
-                                    ${salesNum}
+                                    ₹{salesNum}
                                 </span>
                             </div>
                         </div>
