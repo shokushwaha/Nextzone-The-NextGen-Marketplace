@@ -221,7 +221,7 @@ export default function Account() {
                                 </span>
                             </div>
                             <div className="flex gap-2 items-center justify-center">
-                                <span className='text-gray-600 font-extrabold'>
+                                <span className='text-gray-600 font-extrabold text-sm w-[100px]'>
                                     Share and Earn
                                 </span>
                                 <TwitterShareButton url={`http://localhost:3001/register?account=${currentAccount}`}>
@@ -279,7 +279,7 @@ export default function Account() {
                     </div>
                 }
                 <div>
-                    <h1 className='text-3xl py-4 bg-white px-8 w-[39vw] font-extrabold uppercase text-center '>
+                    <h1 className='text-3xl py-4 bg-white px-8 w-[41vw] font-extrabold uppercase text-center '>
                         Orders History
                     </h1>
 
@@ -366,7 +366,7 @@ export default function Account() {
 
                                                         </div>
                                                         <div className='flex items-start justify-end'>
-                                                            <button className='bg-yellow-400 rounded-md shadow-lg px-2 py-2 flex items-center justify-center gap-2 ml-12 mt-20'>
+                                                            <button className='bg-yellow-400 rounded-md shadow-lg px-2 py-2 flex items-center justify-center gap-2 ml-12 mt-20 w-[150px]'>
                                                                 <CartIcon />
                                                                 <span>
                                                                     Buy Again
