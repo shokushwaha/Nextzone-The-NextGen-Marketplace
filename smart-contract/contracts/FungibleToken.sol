@@ -80,13 +80,24 @@ contract FungibleToken is ERC20 {
     function getActiveTokens(
         address user
     ) external view returns (TokenDetails[] memory) {
-        TokenDetails[] memory activeTokens;
+        uint256 activeCount = 0;
         for (uint256 i = 0; i < userTokenDetails[user].length; i++) {
             if (
                 !userTokenDetails[user][i].expired &&
                 !userTokenDetails[user][i].redeemed
             ) {
-                activeTokens[activeTokens.length] = userTokenDetails[user][i];
+                activeCount++;
+            }
+        }
+        TokenDetails[] memory activeTokens = new TokenDetails[](activeCount);
+        uint256 currentIndex = 0;
+        for (uint256 i = 0; i < userTokenDetails[user].length; i++) {
+            if (
+                !userTokenDetails[user][i].expired &&
+                !userTokenDetails[user][i].redeemed
+            ) {
+                activeTokens[currentIndex] = userTokenDetails[user][i];
+                currentIndex++;
             }
         }
         return activeTokens;
@@ -95,13 +106,24 @@ contract FungibleToken is ERC20 {
     function getExpiredTokens(
         address user
     ) external view returns (TokenDetails[] memory) {
-        TokenDetails[] memory expiredTokens;
+        uint256 expiredCount = 0;
         for (uint256 i = 0; i < userTokenDetails[user].length; i++) {
             if (
                 userTokenDetails[user][i].expired &&
                 !userTokenDetails[user][i].redeemed
             ) {
-                expiredTokens[expiredTokens.length] = userTokenDetails[user][i];
+                expiredCount++;
+            }
+        }
+        TokenDetails[] memory expiredTokens = new TokenDetails[](expiredCount);
+        uint256 currentIndex = 0;
+        for (uint256 i = 0; i < userTokenDetails[user].length; i++) {
+            if (
+                userTokenDetails[user][i].expired &&
+                !userTokenDetails[user][i].redeemed
+            ) {
+                expiredTokens[currentIndex] = userTokenDetails[user][i];
+                currentIndex++;
             }
         }
         return expiredTokens;
@@ -110,12 +132,20 @@ contract FungibleToken is ERC20 {
     function getRedeemedTokens(
         address user
     ) external view returns (TokenDetails[] memory) {
-        TokenDetails[] memory redeemedTokens;
+        uint256 redeemedCount = 0;
         for (uint256 i = 0; i < userTokenDetails[user].length; i++) {
             if (userTokenDetails[user][i].redeemed) {
-                redeemedTokens[redeemedTokens.length] = userTokenDetails[user][
-                    i
-                ];
+                redeemedCount++;
+            }
+        }
+        TokenDetails[] memory redeemedTokens = new TokenDetails[](
+            redeemedCount
+        );
+        uint256 currentIndex = 0;
+        for (uint256 i = 0; i < userTokenDetails[user].length; i++) {
+            if (userTokenDetails[user][i].redeemed) {
+                redeemedTokens[currentIndex] = userTokenDetails[user][i];
+                currentIndex++;
             }
         }
         return redeemedTokens;
