@@ -6,11 +6,11 @@ const RedemmedTokens = ({ name, symbol, price, usedOn }) => {
             <div className='flex flex-col shadow-xl p-2  rounded-md m-4 items-center bg-slate-100 hover:scale-105 transition delay-150 duration-300 ease-in-out  w-[10vw] z-[-1] opacity-50 '>
                 <div className=' w-32 rounded-md   '>
                     <img src={
-                        price * 10 > 0 && price * 10 < 1000
+                        price * 100 > 0 && price * 100 < 1000
                             ? 'https://res.cloudinary.com/dt21djrjq/image/upload/v1691836232/bronze_b9ryxr.jpg'
-                            : price * 10 >= 1000 && price * 10 < 10000
+                            : price * 100 >= 1000 && price * 100 < 10000
                                 ? 'https://res.cloudinary.com/dt21djrjq/image/upload/v1691836199/silver_klhlqq.jpg'
-                                : price * 10 >= 10000 && price * 10 < 25000
+                                : price * 100 >= 10000 && price * 100 < 25000
                                     ? 'https://res.cloudinary.com/dt21djrjq/image/upload/v1691836123/gold_gyd341.jpg'
                                     : 'https://res.cloudinary.com/dt21djrjq/image/upload/v1691836170/premium_ibxcpn.jpg'
 
