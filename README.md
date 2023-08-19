@@ -7,7 +7,7 @@
 <h2><b>🔗 Ecommerce platform with Blockchain Based Loyalty & Rewards System</b></h2>
 
   
-# [DEMO LINK](https://drive.google.com/file/d/1JP4OAlvGKw_sC0RNlKjnm1R65F_g7_6S/view?usp=sharing)
+# [DEMO LINK](https://drive.google.com/file/d/11xk3s51DabcfCA30YOiBRKTqRxXxE8m9/view?usp=drive_link)
 
   </div>
   
