@@ -11,8 +11,7 @@ import Image from 'next/image';
 import { contractABI } from '@/contract-abi/abi';
 import randomstring from 'randomstring';
 const ethers = require('ethers');
-const contractAddress = '0x0264F907e859512504834a02D83D4249772cca0b';
-
+const contractAddress = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS;
 export default function Register() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -51,9 +50,9 @@ export default function Register() {
         try {
 
             const currentAccount = router.query.account
-            const provider = new ethers.providers.JsonRpcProvider('https://polygon-mumbai.g.alchemy.com/v2/fZrknTXjEYJctRct3O_33StLOBfWPnH5');
+            const provider = new ethers.providers.JsonRpcProvider(process.env.NEXT_PUBLIC_RPC_PROVIDER);
 
-            const privateKey = '0557de1e1e79c92dee76597c59e3a8333526f2b047e854de611571ecf5c12634';
+            const privateKey = process.env.NEXT_PUBLIC_PRIVATE_KEY;
             const wallet = new ethers.Wallet(privateKey, provider);
 
 

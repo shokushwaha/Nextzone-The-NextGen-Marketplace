@@ -3,7 +3,7 @@ import Kommunicate from "@kommunicate/kommunicate-chatbot-plugin";
 export default function KommunicateChat() {
   (function (d, m) {
     var kommunicateSettings = {
-      appId: "f65c137ea853fa98e3ffffcdd2b097aa",
+      appId: process.env.NEXT_PUBLIC_APP_ID,
       popupWidget: true,
       automaticChatOpenOnNavigation: true,
     };

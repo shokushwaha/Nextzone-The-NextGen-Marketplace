@@ -5,7 +5,7 @@ export function mongooseConnect() {
         return mongoose.connection.asPromise();
     }
     else {
-        const uri = process.env.MONGODB_URI;
+        const uri = process.env.NEXT_PUBLIC_MONGODB_URI;
         return mongoose.connect(uri);
     }
 }
