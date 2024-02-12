@@ -1,13 +1,11 @@
 <div align = "center">
 
-
 <h1 align="center"> <font size="5"> <b> NextZone </b></h1>
 <!-- PROJECT LOGO -->
 
-<h2><b>🔗 Ecommerce platform with Blockchain Based Loyalty & Rewards System</b></h2>
+<h2><b>🔗 Ecommerce Platform with Blockchain Based Loyalty & Rewards System</b></h2>
 
-  
-# [DEMO LINK](https://drive.google.com/file/d/11xk3s51DabcfCA30YOiBRKTqRxXxE8m9/view?usp=drive_link)
+# [DEMO LINK](https://drive.google.com/file/d/1up9XXv_xYeLFXHX-9C7JZwEFGXxm76XT/view?usp=sharing)
 
   </div>
   
@@ -42,12 +40,12 @@
 </table>
 
 ---
+
 ## About the Site 🚀
 
 ---
 
 Blockchain based: Loyalty & Reward Program using Fungible Token
-
 
 We've developed a cutting-edge Rewards and Loyalty system for our e-commerce platform NextZone, leveraging blockchain technology and fungible tokens. With distinct client and admin applications, users can earn tokens for purchases, referrals, and engagement. The transparent and secure blockchain ensures trust, while the user-friendly apps enhance the experience, creating a seamless and rewarding shopping ecosystem.
 
@@ -58,7 +56,6 @@ We've developed a cutting-edge Rewards and Loyalty system for our e-commerce pla
 ● **Token Transparency**: Real-time view of token status on Etherscan. All the earned, available, expired, and redeemed tokens reciepts are available. Users will be able to see the credited tokens on their Metamask Wallet and the website.
 
 ● **Rewards Section**: Dedicated rewards section showing all the Tokens earned by user, expired tokens and the tokens redemmed by the user. With all the terms and conditions clearly stated.
-
 
 ● **User Authentication**: Secure process for registration and login using JWT, ensuring privacy and personalized shopping.
 
@@ -77,14 +74,14 @@ We've developed a cutting-edge Rewards and Loyalty system for our e-commerce pla
 ● **Instant Chat Assistance**: Responsive chatbot offers prompt support, enhancing the shopping experience and guiding user through the website.
 
 <!-- ● **Deployment**: Used the Polygon blockchain to deploy our solution and demonstrate the final product. -->
-<!-- ●   WE used the Polygon blockchain to deploy our solution and demo the final product as a web prototype🔗<br> -->
----
+
+## <!-- ●   WE used the Polygon blockchain to deploy our solution and demo the final product as a web prototype🔗<br> -->
 
 ## How to Run Client Side of the Website⚡
 
 ---
 
-````
+```
 1. git clone https://github.com/shokushwaha/Grid-HackWizards.git
 
 2. cd client
@@ -105,12 +102,13 @@ BRONZE_URL=""
 OPENAI_API=""
 
 5. npm run dev
-````
+```
+
 ## How to Run Admin Side of the Website⚡
 
 ---
 
-````
+```
 1. git clone https://github.com/shokushwaha/Grid-HackWizards.git
 
 2. cd admin
@@ -126,8 +124,7 @@ MONGODB_URI=""
 NODE_ENV=""
 
 5. npm run dev
-````
-
+```
 
 ## Tech Stack 💻
 
@@ -149,8 +146,8 @@ NODE_ENV=""
 <img src="https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white"> <img src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white"/> <img src="https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white"><img src="https://img.shields.io/badge/threejs-black?style=for-the-badge&logo=three.js&logoColor=white">
 
 ### Backend :
-<img src="https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white"> <img src="https://img.shields.io/badge/OpenZeppelin-4E5EE4?logo=OpenZeppelin&logoColor=fff&style=for-the-badge">
 
+<img src="https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white"> <img src="https://img.shields.io/badge/OpenZeppelin-4E5EE4?logo=OpenZeppelin&logoColor=fff&style=for-the-badge">
 
 ## Contributors ✨
 
